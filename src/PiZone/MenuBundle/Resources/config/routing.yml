@@ -1,0 +1,15 @@
+pi_zone_menu_list:
+    resource: "@PiZoneMenuBundle/Resources/config/routing/list.yml"
+    prefix:   /api/menu
+
+pi_zone_menu_new:
+    resource: "@PiZoneMenuBundle/Resources/config/routing/new.yml"
+    prefix:   /api/menu
+
+pi_zone_menu_edit:
+    resource: "@PiZoneMenuBundle/Resources/config/routing/edit.yml"
+    prefix:   /api/menu
+
+pi_zone_menu_object_actions:
+    resource: "@PiZoneMenuBundle/Resources/config/routing/object_actions.yml"
+    prefix:   /api/menu

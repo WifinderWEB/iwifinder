@@ -1,0 +1,7 @@
+<label for="{{field.id}}" class="col-lg-3 control-label">{{field.label}}</label>
+<div class="col-lg-8">
+    <div class="bs-component" ng-class="{'state-error': !field.valid}">
+        <textarea id="{{field.id}}" name="{{field.full_name}}" class="form-control" ng-required="field.required" ng-model="field.value">{{field.value}}</textarea>
+    </div>
+    <em for="lastname" class="state-error" ng-repeat="error in field.errors" ng-if="!field.valid">{{error}}</em>
+</div>

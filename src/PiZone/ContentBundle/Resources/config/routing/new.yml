@@ -1,0 +1,12 @@
+content_new:
+    path:     /new/{_format}
+    defaults: { _controller: "PiZoneContentBundle:New:new", _format: json }
+    requirements:
+        _format:  json|yml
+
+content_create:
+    path:     /create/{_format}
+    defaults: { _controller: "PiZoneContentBundle:New:create", _format: json }
+    methods:  POST
+    requirements:
+        _format:  json|yml

@@ -1,0 +1,15 @@
+<label for="{{field.id}}" class="col-lg-3 control-label">{{field.label}}</label>
+<div class="col-lg-8">
+    <div class="bs-component" ng-class="{'state-error': !field.valid}">
+        <select class="form-control"
+                ng-model="field.value"
+                id="{{field.id}}"
+                ng-required="field.required"
+                ng-options="choice.value as choice.label for choice in field.choices">
+            <option value="">{{field.empty_value}}</option>
+        </select>
+        <input type="hidden" name="{{field.full_name}}" value="{{field.value}}"/>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+    </div>
+    <em for="lastname" class="state-error" ng-repeat="error in field.errors" ng-if="!field.valid">{{error}}</em>
+</div>

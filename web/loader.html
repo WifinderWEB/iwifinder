@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://pokupo-server.asmsoft.ru/js/widgets/JSCore-1.3.js"></script>
+    <script type="text/javascript">
+        var pkpWHostTmpl = 'http://pokupo-promo.asmsoft.ru/themes/default/tmpl';
+        PokupoWidgets.Init([
+//                'all'
+            'authentication', 'breadCrumb', 'buttonPayment', 'catalog',
+            'content', 'cart', 'cartGoods', 'cabinetCartGoods', 'favorites',  'goods', 'message',
+            'order', 'orderList', 'profile', 'registration', 'registrationSeller', 'search', 'searchResult',
+            'shopInfo', 'userInformation'
+        ],{
+            core: {
+                shopId: 1,                                                 // id магазина
+                host: 'pokupo-server.asmsoft.ru/',                      // переопределяем параметр на dev сервер (на продакшен версии этот параметр убрать)
+                pathToData : "services/DataProxy.php?query=",   // переопределяем параметр на dev сервер (на продакшен версии этот параметр убрать)
+                pathToPostData : 'services/DataPostProxy.php',  // переопределяем параметр на dev сервер (на продакшен версии этот параметр убрать)
+                hostApi : 'dev.pokupo.ru/api/',                            // api (переопределяем параметр на dev сервер) (на продакшен версии этот параметр убрать)
+                hostPromo: 'http://pokupo-promo.asmsoft.ru/',                   // url промосайта необходим для загрузки библиотек
+                theme: 'brown_green',
+                pathToTmpl: 'pokupo-promo.asmsoft.ru/themes/'
+            },
+            content: {
+                block: {
+                    container: {
+                        empty: { widget: 'tileBlockId' }
+                    }
+                }
+            },
+            cart: {
+                show:{title:"always",count:true,baseCost:true,finalCost:true,fullInfo:true}
+            },
+            favorites: {
+                show: ["infoShop", "addToCart", "buy"]
+            },
+            goods: {
+                show: ["selectionCount", "addToCart", "buy", "gallery", "shipping", "opinion", "favorites", "blockShop", "blockInfoSeller"]
+            },
+            infoSeller : {
+                show: ["blockShop", "blockInfoSeller"]
+            },
+            userInformation: {
+                show: ["icon", "raiting"]
+            },
+            standalonePayment: {
+                showButton: false
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="main">
+        <section class="subheader subheader--min">
+            <div class="container">
+                <div id="shopInfoWidgetId"></div>
+                <div class="menu-login">
+                    <div id="userInformationWidgetId" style="float: left"></div>
+                    <div id="cartInfoWidgetId" style="float: left"></div>
+                </div>
+            </div>
+        </section>
+        <div id="authenticationWidgetId"></div>
+        <!-- search -->
+        <div id="searchWidgetId"></div>
+
+        <div id="advancedSearchFormWidgetId"></div>
+        <!-- /search -->
+
+        <!-- content -->
+        <section class="store nosidebar">
+            <div id="menuPersonalCabinetWidgetId"></div>
+
+            <div class="container">
+                <div id="catalogWidgetId"></div>
+                <div class="b-thermometer" id="breadCrumbsWidgetId_1"></div>
+                <div id="sliderBlockId"></div>
+                <div id="tileBlockId"></div>
+                <div id="carouselBlockId"></div>
+
+                <div id="content"></div>
+            </div>
+
+        </section>
+        <!-- /content -->
+
+        <div class="footer-overlay"></div>
+        <footer class="footer">
+            <div class="container"></div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% verbatim %}
+    <div ng-controller="UserInfoCtrl">
+    <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown" aria-expanded="false">
+        <img src="" alt="avatar" class="mw30 br64">
+        <span class="hidden-xs pl15"> Michael .R </span>
+        <span class="caret caret-tp hidden-xs"></span>
+    </a>
+    <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+        <li class="list-group-item">
+            <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-envelope"></span> Messages
+                <span class="label label-warning">2</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-user"></span> Friends
+                <span class="label label-warning">6</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-bell"></span> Notifications </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-gear"></span> Settings </a>
+        </li>
+        <li class="dropdown-footer" id="{{ logoutButtonId }}">
+            <a href="#" class="" ng-click="Click.Logout()">
+                <span class="fa fa-power-off pr5"></span> Logout </a>
+        </li>
+    </ul>
+    </div>
+{% endverbatim %}

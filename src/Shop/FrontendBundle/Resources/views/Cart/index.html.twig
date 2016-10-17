@@ -1,0 +1,142 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block title %}
+    <title>Моя корзина</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Моя корзина">
+    <meta http-equiv="description" content="Моя корзина">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Моя корзина">
+    <meta http-equiv="Keywords" content="Моя корзина">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css'
+    %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <span>Моя корзина</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section class="lk cart">
+    <div class="wrapper">
+        <h1>Корзина</h1>
+        {% verbatim %}
+        <div class="cart" ng-controller="CartCtrl">
+            <form action="/personal/cart/" method="post">
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Стоимость</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-show="countGoods == 0">
+                        <td colspan="6" style="text-align: center">
+                            <img src="/bundles/pizonebackend/img/ajax-loader.gif"/>
+                        </td>
+                    </tr>
+                    <tr class="product ng-hide" ng-repeat="item in goods" ng-show="countGoods > 0">
+                        <td>
+                            <a href="/catalog/{{item.category.alias ? item.category.alias : item.id}}/{{item.alias}}">
+                                <img title="{{item.title_image}}" ng-src="//{{item.image_path}}" alt="{{item.alt_image}}">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/catalog/{{item.category.alias ? item.category.alias : item.id}}/{{item.alias}}">{{item.title}}</a>
+                        </td>
+                        <td>
+                            <span class="price" ng-if="item.discount">
+                                {{item.price-item.price/100*item.discount}}
+                                <span class="rub" title="руб.">₽</span>
+                            </span>
+                            <span class="price" ng-if="!item.discount">
+                                {{item.price}}
+                                <span class="rub" title="руб.">₽</span>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="minus" ng-click="minusGoods(item)"></span>
+                            <input type="text" value="{{item.count}}" ng-model="item.count">
+                            <span class="plus" ng-click="plusGoods(item)"></span>
+                        </td>
+                        <td>
+                        <span class="price" ng-if="item.discount">
+                            {{(item.price-item.price/100*item.discount)*item.count}}
+                            <span class="rub" title="руб.">₽</span>
+                        </span>
+                        <span class="price" ng-if="!item.discount">
+                            {{item.price*item.count}}
+                            <span class="rub" title="руб.">₽</span>
+                        </span>
+                        </td>
+                        <td>
+                        <a href="#" class="delete" ng-click="removeItem(item)"></a>
+                        </td>
+                    </tr>
+                    <tr class="ng-hide" ng-show="countGoods > 0">
+                        <td colspan="3"></td>
+                        <td>Сумма заказа</td>
+                        <td colspan="2"><span class="price sum">{{itog}} <span class="rub" title="руб.">₽</span></span>
+                        </td>
+                    </tr>
+                    <tr class="ng-hide" ng-show="countGoods > 0">
+                        <td colspan="3"></td>
+                        <td>Всего к оплате</td>
+                        <td colspan="2"><span class="price itogo">{{itog}} <span class="rub" title="руб.">₽</span></span>
+                        </td>
+                    </tr>
+                    <tr class="ng-hide" ng-show="countGoods > 0">
+                        <td colspan="3"></td>
+                        <td colspan="3">
+                            <input type="submit" value="Оформить заказ" class="button">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+            <!-- http://google.com/ads/remarketing -->
+            <noscript>
+                <div style="display:inline;">
+                    <img height="1" width="1" style="border-style:none;" alt=""
+                         src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/968428594/?value=0&amp;guid=ON&amp;script=0">
+                </div>
+            </noscript>
+            <!-- http://google.com/ads/remarketing -->
+
+
+        </div>
+        {% endverbatim %}
+    </div>
+</section>
+{% endblock %}

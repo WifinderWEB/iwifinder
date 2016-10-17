@@ -1,0 +1,107 @@
+shop_frontend_registration:
+    resource: "@ShopFrontendBundle/Resources/config/registration.xml"
+
+shop_frontend_security:
+    resource: "@ShopFrontendBundle/Resources/config/security.xml"
+
+shop_frontend_change_password:
+    resource: "@ShopFrontendBundle/Resources/config/change_password.xml"
+
+shop_frontend_resetting:
+    resource: "@ShopFrontendBundle/Resources/config/resetting.xml"
+
+shop_frontend_password_successfully_changed:
+    pattern: /password_successfully_changed
+    defaults: { _controller: ShopFrontendBundle:Content:index, alias: password_successfully_changed }
+
+shop_frontend_redirect_auth:
+    pattern:  /redirect_auth
+    defaults: { _controller: ShopFrontendBundle:User:redirectAuth }
+
+shop_frontend_homepage:
+    pattern:  /
+    defaults: { _controller: ShopFrontendBundle:Content:index, alias: homepage }
+    
+shop_frontend_homepage1:
+    pattern:  /index.html
+    defaults: { _controller: ShopFrontendBundle:Content:index, alias: homepage }
+
+#shop_frontend_support:
+#    pattern:  /support
+#    defaults: { _controller: ShopFrontendBundle:Content:support }
+
+#shop_frontend_confirmed:
+#    pattern:  /confirmed
+#    defaults: { _controller: ShopFrontendBundle:User:confirmed }
+
+shop_frontend_check_user:
+    pattern:  /check_user
+    defaults: { _controller: ShopFrontendBundle:Content:index, alias: check_user }
+
+shop_frontend_order:
+    pattern:  /order/{catalog_alias}
+    defaults: { _controller: ShopFrontendBundle:Catalog:order, alias: order }
+
+shop_frontend_catalog_list:
+    pattern:  /catalog
+    defaults: { _controller: ShopFrontendBundle:Catalog:show, alias: esser_by_honeywell }
+
+shop_frontend_cart:
+    path: /cart
+    defaults: { _controller: ShopFrontendBundle:Cart:index}
+shop_frontend_cart1:
+    path: /cart/
+    defaults: { _controller: ShopFrontendBundle:Cart:index}
+
+shop_frontend_catalog_list1:
+    path:  /catalog/
+    defaults: { _controller: ShopFrontendBundle:Catalog:index }
+
+shop_frontend_catalog_search:
+    pattern:  /products/search
+    defaults: { _controller: ShopFrontendBundle:Catalog:Search }
+
+shop_frontend_catalog_show:
+    pattern:  /catalog/{alias}
+    defaults: { _controller: ShopFrontendBundle:Catalog:show }
+    
+shop_frontend_catalog_show_2:
+    pattern:  /catalog/{alias}/
+    defaults: { _controller: ShopFrontendBundle:Catalog:show }
+
+
+shop_frontend_catalog_show_goods:
+    pattern:  /catalog/{category}/{alias}
+    defaults: { _controller: ShopFrontendBundle:Catalog:goods }
+
+shop_frontend_catalog_show_goods_2:
+    pattern:  /catalog/{category}/{alias}/
+    defaults: { _controller: ShopFrontendBundle:Catalog:goods }
+
+shop_frontend_catalog_show_clino:
+    pattern:  /products/clino/{alias}
+    defaults: { _controller: ShopFrontendBundle:Catalog:show }
+
+shop_frontend_catalog_show_clino_2:
+    pattern:  /products/clino/{alias}/
+    defaults: { _controller: ShopFrontendBundle:Catalog:show }
+
+shop_frontend_proxy_submit_form:
+    pattern:  /proxy/submit_form
+    defaults: { _controller: ShopFrontendBundle:Proxy:submitForm }
+
+shop_frontend_sitemap:
+    pattern:  /sitemap
+    defaults: { _controller: ShopFrontendBundle:Menu:sitemap }
+
+shop_frontend_content_show:
+    pattern:  /{alias}.{_format}
+    defaults: { _controller: ShopFrontendBundle:Content:index, _format: html }
+    
+shop_frontend_content_show_1:
+    pattern:  /{alias}/
+    defaults: { _controller: ShopFrontendBundle:Content:index }
+    
+shop_frontend_content_show_2:
+    pattern:  /{alias}/index.html
+    defaults: { _controller: ShopFrontendBundle:Content:index }

@@ -1,0 +1,62 @@
+{% set layout = 'FullWidthTemplate' %}
+{% if content.layout %}
+    {% set layout = content.layout.file %}
+{% endif %}
+{% extends 'ShopFrontendBundle:Templates:' ~ layout ~ '.html.twig' %}
+
+{% block title %}
+    {% if content.meta %}
+        <title>{{ content.meta.metaTitle }}</title>
+    {% endif %}
+    {% if not content.meta %}
+        <title>{{ content.title }}</title>
+    {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+    {% if content.meta %}
+        {{ content.meta.metaDescription }}
+    {% endif %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% if content.meta %}
+        {{ content.meta.metaKeywords }}
+    {% endif %}
+{% endblock %}
+
+{% block more_scripts %}
+    {% if content.meta %}
+        {{ content.meta.moreScripts }}
+    {% endif %}
+{% endblock %}
+
+{% block topMenu %}
+    {% include "ShopFrontendBundle:Menu:_top_menu_homepage.html.twig" %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <span>{{ content.title }}</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block titlePage %}
+    {{ content.title }}
+{% endblock %}
+{% block content %}
+    {{content.content|raw}}
+{% endblock %}

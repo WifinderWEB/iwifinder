@@ -1,0 +1,35 @@
+pi_zone_menu:
+    resource: "@PiZoneMenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pi_zone_layout:
+    resource: "@PiZoneLayoutBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pi_zone_backend:
+    resource: "@PiZoneBackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pi_zone_content:
+    resource: "@PiZoneContentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pi_zone_webitem:
+    resource: "@PiZoneWebItemBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pi_zone_user:
+    resource: "@PiZoneUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+shop_frontend:
+    resource: "@ShopFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+shop_api:
+    resource: "@ShopApiBundle/Resources/config/routing.yml"
+    prefix:   /api/frontend

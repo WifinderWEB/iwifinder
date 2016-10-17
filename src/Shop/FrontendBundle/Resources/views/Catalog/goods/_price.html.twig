@@ -1,0 +1,19 @@
+<div class="prices sale ">
+    {%  if content.sale.discount is defined and content.sale.discount > 0 %}
+        <div data-price="31">
+            Старая цена <span class="price">{{ content.sale.retail_price }} <span class="rub" title="руб.">₽</span>/шт</span>
+        </div>
+        <div data-price="24">
+            Ваша цена <span class="help-info"><span>Ваша цена – действует при единовременной покупке в интернет – магазине.</span></span>
+            <span class="price">{{ content.sale.retail_price - (content.sale.retail_price/100*content.sale.discount) }} <span class="rub" title="руб.">₽</span>/шт                    </span>
+        </div>
+        <div data-price="0">
+            Экономия
+            <span class="price">{{ content.sale.retail_price/100*content.sale.discount}} <span class="rub" title="руб.">₽</span></span>
+        </div>
+    {% else %}
+        <div data-price="31">
+            Цена <span class="price">{{ content.sale.retail_price }} <span class="rub" title="руб.">₽</span>/шт</span>
+        </div>
+    {% endif %}
+</div>

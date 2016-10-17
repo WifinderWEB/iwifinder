@@ -1,0 +1,9 @@
+{% if app.user %}
+    <script type="text/javascript">
+        window.location.href = "{{ path('Shop_frontend_homepage') }}";
+    </script>
+{% else %}
+    <script type="text/javascript">
+        window.location.href = "{{ path('Shop_frontend_check_user') }}";
+    </script>
+{% endif %}

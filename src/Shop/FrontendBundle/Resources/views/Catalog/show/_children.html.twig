@@ -1,0 +1,98 @@
+<div class="row-fluid" ng-controller="CatalogCtrl">
+    {% if content.children is defined and content.children|length > 0 %}
+        {% set test = 0 %}
+        {% for item in content.children %}
+            {% if item.child is not defined %}
+                <div class="col-sm-4 col-xl-3 goods">
+                    <div class="panel panel-tile text-center br-a br-grey">
+                        <div class="panel-body">
+                            {% set link = '/products/' ~ item.alias %}
+                            <h3 class="fs30 mt5 mbn">
+                                <a href="{{ link|localeLink }}"
+                                   title="{{ item.title }}">{{ item.title| truncate(40, true) }}</a>
+                            </h3>
+                        </div>
+                        <div class="panel-footer br-t p12">
+                            <span class="fs11">
+                                {% if item.article is defined %}
+                                    <b>арт. {{ item.article }}</b><br/>
+                                {% endif %}
+                                {% if item.sale is defined %}
+                                    {% if item.sale.retail_price is defined %}
+                                        <b>{{ item.sale.retail_price }} руб. </b>
+                                        {% if item.sale.discount is defined and  item.sale.discount > 0 %}
+                                        <span class="label label-rounded label-info">Скидка {{ item.sale.discount }}%</span>
+                                    {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="panel-footer br-t p12">
+                            <span class="fs11">
+                                {% if item.sale is defined %}
+                                    {% if item.sale.retail_price is defined %}
+                                        <div class="btn-group ng-hide" id="goods_{{ item.id }}" ng-show="!inCart({{ item.id }})">
+                                            <button type="button" class="btn btn-success" onclick="EventDispatcher.DispatchEvent('add-to-cart', {id: {{ item.id }}})">
+                                                <span class="fa fa-shopping-cart fs14 va-m"></span>
+                                                Купить
+                                            </button>
+                                        </div>
+                                        <div class="btn-group ng-hide" id="goods_{{ item.id }}" ng-show="inCart({{ item.id }})">
+                                            <span class="text-success">Товар добавлен в корзину</span><br/>
+                                            <a class="text-danger" ng-click="removeItem({{ item.id }})">
+                                                <span class="fa fa-remove fs14 va-m"></span>
+                                                Удалить
+                                            </a>
+                                        </div>
+                                    {% else %}
+                                        Нет в наличии
+                                    {% endif %}
+                                {% else %}
+                                    Нет в наличии
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+        {% for child in content.children %}
+            {% if child.child is defined and child.child|length > 0 %}
+                <div class="row">
+                    {% set link = '/products/' ~ child.alias %}
+                    <h3><a href="{{ link|localeLink }}">{{ child.title }}</a></h3>
+                    {% if child.anons is defined %}
+                        <p><span class="small">{{ child.anons|raw }}</span></p>
+                    {% endif %}
+
+                    {% for item in child.child %}
+                        <div class="col-sm-4 col-xl-3 goods">
+                            <div class="panel panel-tile text-center br-a br-grey">
+                                <div class="panel-body">
+                                    {% set link = '/products/' ~ item.alias %}
+                                    <h3 class="fs30 mt5 mbn">
+                                        <a href="{{ link|localeLink }}"
+                                           title="{{ item.title }}">{{ item.title| truncate(40, true) }}</a></h3>
+                                </div>
+                                <div class="panel-footer br-t p12">
+                                  <span class="fs11">
+                                    {% if item.article is defined %}
+                                        <b>арт. {{ item.article }}</b>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success" onclick="EventDispatcher.DispatchEvent('add-to-cart', {id: {{ item.id }}})">
+                                                Купить
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>

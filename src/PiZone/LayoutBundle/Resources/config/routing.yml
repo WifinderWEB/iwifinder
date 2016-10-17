@@ -1,0 +1,15 @@
+pi_zone_layout_list:
+    resource: "@PiZoneLayoutBundle/Resources/config/routing/list.yml"
+    prefix:   /api/layout
+
+pi_zone_layout_new:
+    resource: "@PiZoneLayoutBundle/Resources/config/routing/new.yml"
+    prefix:   /api/layout
+
+pi_zone_layout_edit:
+    resource: "@PiZoneLayoutBundle/Resources/config/routing/edit.yml"
+    prefix:   /api/layout
+
+pi_zone_layout_object_actions:
+    resource: "@PiZoneLayoutBundle/Resources/config/routing/object_actions.yml"
+    prefix:   /api/layout

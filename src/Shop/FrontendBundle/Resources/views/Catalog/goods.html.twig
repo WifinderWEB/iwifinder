@@ -1,0 +1,148 @@
+{% extends 'ShopFrontendBundle:Templates:NoWrapTemplate.html.twig' %}
+
+{% block title %}
+    <title>Каталог товаров</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Каталог товаров">
+    <meta http-equiv="description" content="Каталог товаров">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Каталог товаров">
+    <meta http-equiv="Keywords" content="Каталог товаров">
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <a href="/catalog/">
+                        <span>Каталог товаров</span>
+                    </a>
+                </li>
+                {% if content.category is defined %}
+                <li>
+                    <a href="/catalog/{{ content.category.alias }}/">
+                        <span>{{ content.category.title }}</span>
+                    </a>
+                </li>
+                {% endif %}
+                <li>
+                    <span>{{ content.title }}</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<schema itemtype="https://schema.org/Product" itemscope="">
+    <section class="catalog-detail">
+        <div class="wrapper">
+            <h1 itemprop="name">{{ content.title }}</h1>
+
+            <ul class="share">
+                <li><a href="javascript:window.print()"></a></li>
+            </ul>
+
+            <div class="yashare-auto-init share" data-yasharel10n="ru" data-yasharetype="none"
+                 data-yasharequickservices="vkontakte,facebook,twitter,odnoklassniki,gplus,moimir,yaru"
+                 data-yasharedescription="RVi-IPC21DNL (без объектива) - мегапиксельная IP камера в стандартном корпусе, 1/3&quot; CMOS Sensor, макс. разрешение 1280x720 @ 25 к/с, H.264/MJPEG, чувствительность до 0.05 люкс, &quot;день-ночь&quot;, без объектива (крепление C/CS), 1 аудиовход/1 аудиовыход, 1 тревожный вход/1 выход, локальный архив на Micro SD/SDHC карту, питание PoE/12VDC, ПО на 36 камер в комплекте"
+                 data-yashareimage="https://www.layta.ruhttps://img.layta.ru/9eb/rvi-ipc21dnl-bez-obektiva-0.resize2.jpeg"></div>
+
+            {% include 'ShopFrontendBundle:Catalog/goods:_image.html.twig' %}
+
+            <div class="detail">
+                {% include 'ShopFrontendBundle:Catalog/goods:_opinion.html.twig' %}
+
+                {% if content.article is defined %}
+                <span class="articul">Артикул: <span>{{ content.article }}</span></span>
+                {% endif %}
+                {% if content.anons is defined %}
+                <div class="description">{{ content.anons | raw }} ... <a href="#product_menu">подробнее</a>
+
+                </div>
+                {% endif %}
+
+                {% if content.sale is defined %}
+                    {% include 'ShopFrontendBundle:Catalog/goods:_price.html.twig' %}
+                {% endif %}
+                {#<div class="bonus">#}
+                    {#Бонусных рублей за покупку#}
+                    {#<span class="help-info"><span>За каждую покупку вам начисляются бонусы. 1 бонус = 1 рубль.</span></span>#}
+                    {#<span class="count">155</span>#}
+                {#</div>#}
+                <div class="buttons">
+                    <a href="javascript:void(0)" class="buy-one-click action-button" >Купить сейчас</a>
+                    <a href="javascript:void(0)" class="addtocart action-button" >Добавить в корзину</a>
+                </div>
+                {#<div class="favorite_compare">#}
+                    {#<span class="to_favorite action-button " data-action="add_to_favorite" data-elementid="81286">в закладки</span>#}
+                    {#<span class="to_compare action-button " data-action="add_to_compare" data-elementid="81286">сравнить</span>#}
+                {#</div>#}
+
+                <div class="available" title="В наличии">
+                    <div class="title">Наличие:</div>
+                    Москва
+
+                    <span class="dotes help-info hbottom">
+                        <b class="hh">Много  </b>
+                        <b class="div">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </b>
+                    </span>
+
+                    Самовывоз <span class="cityd">Сегодня</span>
+                </div>
+
+                {% include 'ShopFrontendBundle:Catalog/goods:_payment.html.twig' %}
+
+                {% include 'ShopFrontendBundle:Catalog/goods:_delivery.html.twig' %}
+            </div>
+        </div>
+    </section>
+
+
+    {% include 'ShopFrontendBundle:Catalog/goods:_goods_menu.html.twig' %}
+
+    {% if content.related is defined %}
+    {% include 'ShopFrontendBundle:Catalog/goods:_related_goods.html.twig' %}
+    {% endif %}
+
+    <section class="catalog-detail-blocks">
+        <div class="wrapper">
+
+            <div class="block" id="product_description">
+                <h2>Описание:</h2>
+                <div class="content  short_text_box">
+                    {{ content.content|raw }}
+                </div>
+                {% if content.features is defined %}
+                <h2>Особенности:</h2>
+                <div class="content  short_text_box">
+                    {{ content.features | raw }}
+                </div>
+                {% endif %}
+            </div>
+            {% if content.features is defined %}
+            <div class="block" id="product_specifications">
+                <h3 class="likeH2">Характеристики:</h3>
+                {{ content.Technical_characteristics|raw }}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</schema>
+{% endblock %}

@@ -1,0 +1,11 @@
+web_item:
+    path:     /{_format}
+    defaults: { _controller: "PiZoneWebItemBundle:List:index", _format: json }
+    requirements:
+        _format:  json|xml
+
+web_item_set_active:
+    path:     /{id}/set/{active}/{_format}
+    defaults: { _controller: "PiZoneWebItemBundle:List:active", _format: json }
+    requirements:
+        _format:  json|xml

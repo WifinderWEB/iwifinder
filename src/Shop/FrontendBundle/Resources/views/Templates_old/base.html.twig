@@ -1,0 +1,105 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+    {#<!-- Meta, title, CSS, favicons, etc. -->#}
+    {#<meta charset="utf-8">#}
+    {#<title>Esserbyhoneywell - shop</title>#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+
+    {#{% block stylesheets %}#}
+        {#<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">#}
+        {#{% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/frontend.min.css'#}
+        {#'bundles/shopfrontend/css/bootstrap.min.css'#}
+        {#'bundles/shopfrontend/css/theme_2.css'#}
+        {#'bundles/pizonebackend/css/admin-forms.css'#}
+        {#'bundles/shopfrontend/css/theme.css'#}
+        {#'bundles/shopfrontend/css/style.css'#}
+        {#%}#}
+        {#<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>#}
+        {#{% endstylesheets %}#}
+    {#{% endblock %}#}
+
+    {#<!-- Custom Fonts -->#}
+    {#<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">#}
+    {#<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700">#}
+    {#<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">#}
+    {#<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">#}
+
+    {#<!-- Favicon -->#}
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
+
+    {#<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->#}
+    {#<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->#}
+    {#<!--[if lt IE 9]>#}
+    {#<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>#}
+    {#<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>#}
+    {#<![endif]-->#}
+
+{#</head>#}
+
+{#<body id="page-top" class="index" ng-app="shop">#}
+
+
+{#<!-- Navigation -->#}
+{#{% block topMenu %}#}
+{#{% include "ShopFrontendBundle:Menu:_top_menu.html.twig" %}#}
+{#{% endblock %}#}
+
+{#<!-- Hero Content -->#}
+{#{% block body %}#}
+{#{% endblock %}#}
+
+{#<!-- Clients Section -->#}
+{#{% include('ShopFrontendBundle:Templates:_external.html.twig') %}#}
+
+{#<!-- Contact Section -->#}
+{#{% include('ShopFrontendBundle:Templates:_contact.html.twig') %}#}
+
+{#<!-- Footer -->#}
+{#{% include('ShopFrontendBundle:Templates:_footer.html.twig') %}#}
+
+{#{% block javascripts %}#}
+    {#{% javascripts filter='?yui_js' output='assetic/js/compiled/frontend.min.js'#}
+    {#'bundles/shopfrontend/js/jquery.min.js'#}
+    {#'bundles/shopfrontend/js/jquery.easing.min.js'#}
+    {#'bundles/shopfrontend/js/jquery.maskedinput.min.js'#}
+    {#'bundles/shopfrontend/js/bootstrap.min.js'#}
+    {#'bundles/shopfrontend/js/jqBootstrapValidation.js'#}
+    {#'bundles/shopfrontend/js/contact_me.js'#}
+    {#'bundles/shopfrontend/js/main.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+    {#{% javascripts filter='?yui_js' output='assetic/js/compiled/angular.min.js'#}
+    {#'bundles/pizonebackend/js/lib/bower_components/angular/angular.js'#}
+    {#'bundles/pizonebackend/js/lib/bower_components/angular-cookies/angular-cookies.js'#}
+    {#'bundles/pizonebackend/js/lib/bower_components/ngstorage/ngStorage.js'#}
+    {#'bundles/pizonebackend/js/lib/bower_components/angular-sanitize/angular-sanitize.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+
+    {#<script type="text/javascript" src="{{ asset('bundles/pizonebackend/js/lib/bower_components/angular-ui-router/release/angular-ui-router.js') }}"></script>#}
+
+    {#{% javascripts filter='?yui_js' output='assetic/js/compiled/shop.min.js'#}
+    {#'bundles/pizonebackend/js/service/event.dispatcher.js'#}
+    {#'bundles/pizonebackend/js/service/exception.js'#}
+    {#'bundles/pizonebackend/js/service/notify.js'#}
+    {#'bundles/pizonebackend/js/admindesigns/pnotify.js'#}
+    {#'bundles/pizonebackend/js/service/loader.js'#}
+    {#'bundles/shopfrontend/js/app/app.config.js'#}
+    {#'bundles/shopfrontend/js/app/controller/main.js'#}
+    {#'bundles/shopfrontend/js/app/controller/cart.js'#}
+    {#'bundles/shopfrontend/js/app/controller/cartInfo.js'#}
+    {#'bundles/shopfrontend/js/app/controller/order.js'#}
+    {#'bundles/shopfrontend/js/app/controller/orderCreated.js'#}
+    {#'bundles/shopfrontend/js/app/controller/goods.js'#}
+    {#'bundles/shopfrontend/js/app/controller/catalog.js'#}
+    {#'bundles/shopfrontend/js/app/app.controller.js'#}
+    {#'bundles/shopfrontend/js/app/app.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+{#{% endblock %}#}
+{#</body>#}
+{#</html>#}

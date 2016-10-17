@@ -1,0 +1,36 @@
+{% set open = ""%}
+{% if path|length > 2 and alias != 'shop'%}
+    {%set open = " menu--opened"%}
+{% endif%}
+
+<ul class="menu b-navigation{{open}}">
+    {% for item in items %}
+        {% set class = "" %}
+        {% if item.id in path%}
+            {% set class = " active"%}
+        {% endif%}
+        {% if item.children|length > 0 %}
+            <li class="menu__item with-submenu{{class}}">
+                <a href="{{ item.link|localeLink }}" {% if class != '' %}class="{{class}}"{% endif %}>
+                    <span>{{ item.title }}</span>
+                </a>
+                {% if alias == 'homepage' or alias == 'shop'%}
+                    {% set class = " "%}
+                {% endif%}
+                <ul class="submenu{{class}}">
+                {% include 'PiZoneMenuBundle:Menu:_topSubMenu.html.twig' with {'items': item.children, 'subMenu' : 1}%}
+                </ul>
+            </li>
+        {% else %}
+            <li class="menu__item{{class}}">
+                <a href="{{ item.link|localeLink }}" {% if class != '' %}class="{{class}}"{% endif %}>
+                    <span>{{ item.title }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% if open %}
+    <div class="submenu-bg active"></div>
+{% endif %}
+

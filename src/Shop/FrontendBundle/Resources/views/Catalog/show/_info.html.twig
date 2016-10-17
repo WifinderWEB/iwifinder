@@ -1,0 +1,59 @@
+<div class="row-fluid">
+    <div class="span11 offset1" ng-controller="GoodsCtrl" ng-init="goodsId= {{ content.id }}">
+        <dl class="dl-horizontal">
+            {% if content.article is defined %}
+                <dt>Артикул:</dt>
+                <dd>{{ content.article }}</dd>
+            {% endif %}
+            {% if content.approval is defined %}
+                <dt>Сертификаты:</dt>
+                <dd>{{ content.approval }}</dd>
+            {% endif %}
+            {% if content.sale is defined %}
+                {% if content.sale.retail_price is defined %}
+                    <dt>Цена:</dt>
+                    <dd>
+                        {{ content.sale.retail_price }}
+                        {% if content.sale.discount is defined and  content.sale.discount > 0 %}
+                            <span class="label label-rounded label-info">Скидка {{ content.sale.discount }}%</span>
+                        {% endif %}
+                    </dd>
+                    <dt>
+                        <br/>
+                        <div ng-show="inCart" class="ng-hide">В корзине: </div>
+                    </dt>
+                    {% verbatim %}
+                        <dd id="{{ formId }}">
+                            <br/>
+                            <div class="btn-group ng-hide" ng-show="!inCart">
+                            {% endverbatim %}
+                            <button type="button" class="btn btn-success" onclick="EventDispatcher.DispatchEvent('add-to-cart', {id: {{ content.id }}})">
+                                <span class="fa fa-shopping-cart fs14 va-m"></span>
+                                Купить
+                            </button>
+                            {% verbatim %}
+                            </div>
+                            <div ng-show="inCart" class="ng-hide">
+                                <span class="label label-rounded label-default" ng-click="minusGoods()" ><i class="fa fa-minus"></i></span>
+                                <span class="label label-dark">{{count}}</span>
+                                <span class="label label-rounded label-default" ng-click="plusGoods()"><i class="fa fa-plus"></i></span>
+
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="removeItem()" style="margin-left: 20px;">
+                                    <i class="fa fa-remove"></i> Удалить из корзины
+                                </button>
+                            </div>
+                        </dd>
+                    {% endverbatim %}
+                {% else %}
+                    <dt></dt>
+                    <dd>Нет в наличии</dd>
+                {% endif %}
+            {% else %}
+                {% if content.article is defined %}
+                    <dt></dt>
+                    <dd>Нет в наличии</dd>
+                {% endif %}
+            {% endif %}
+        </dl>
+    </div>
+</div>

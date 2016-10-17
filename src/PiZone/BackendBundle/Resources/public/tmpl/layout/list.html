@@ -1,0 +1,33 @@
+<h2><span class="glyphicon glyphicon-list"></span> Список шаблонов сайта</h2>
+<div class="panel invoice-panel">
+    <div class="panel-heading">
+        <div class="panel-header-menu pull-right mr10" ng-include="pathToTmpl + 'include/_list_panel_header_menu.html'"></div>
+    </div>
+    <div class="panel-body">
+        <div class="row mb20" id="invoice-table">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th field-sort-pizone field-alias="'id'" field-label="'ID'" field-type="'int'"></th>
+                        <th field-sort-pizone field-alias="'name'" field-label="'Название'" field-type="'string'"></th>
+                        <th field-sort-pizone field-alias="'description'" field-label="'Описание'" field-type="'string'"></th>
+                        <th>Активен?</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="layout in list">
+                        <td><b>{{layout.id}}</b></td>
+                        <td>{{layout.name}}</td>
+                        <td>{{layout.description}}</td>
+                        <td button-active-pizone ng-model="layout"></td>
+                        <td list-button-group-pizone="'layout'" ng-model="layout"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer" ng-include="pathToTmpl + 'include/_list_footer.html'"></div>
+</div>

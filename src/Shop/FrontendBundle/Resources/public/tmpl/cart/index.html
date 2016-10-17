@@ -1,0 +1,98 @@
+<div class="portfolio-modal modal fade in" id="{{cartModalId}}" tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-content">
+        <div class="close-modal" ng-click="closeCart()">
+            <div class="lr">
+                <div class="rl" ></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Корзина</h2>
+
+                        <div class="panel" id="{{cartContentId}}">
+                            <div class="panel-body pn">
+                                <div class="table-responsive">
+                                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                                        <thead>
+                                            <tr class="bg-light">
+                                                <th class="text-center">
+                                                    <div class="checkbox-custom mb5">
+                                                        <input type="checkbox" id="selectAll" ng-model="selectAll">
+                                                        <label for="selectAll">&nbsp;</label>
+                                                    </div>
+                                                </th>
+                                                <th class="">Иконка</th>
+                                                <th class="w350">Название продукта</th>
+                                                <th class="">Артикль</th>
+                                                <th class="">Цена</th>
+                                                <th class="">Скидка</th>
+                                                <th class="" style="width: 130px">Кол-во</th>
+                                                <th class="text-right">Действия</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in goods">
+                                                <td class="text-center">
+                                                    <div class="checkbox-custom mb5">
+                                                        <input type="checkbox" id="goods{{item.id}}" ng-model="item.checked">
+                                                        <label for="goods{{item.id}}">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td class="w100">
+                                                    <img class="img-responsive mw40 ib" title="{{item.image_title}}" ng-src="//{{item.image_path}}">
+                                                </td>
+                                                <td class=""><a href="/products/{{item.alias}}" class="product_link" style="color: #666">{{item.title}}</a></td>
+                                                <td class="">{{item.article}}</td>
+                                                <td class="">{{item.price}} <i class="fa fa-rub"></i></td>
+                                                <td>{{item.discount}}%</td>
+                                                <td class="">
+                                                    <span class="label label-rounded label-default" ng-click="minusGoods(item)" ><i class="fa fa-minus"></i></span>
+                                                    <span class="label label-dark">{{item.count}}</span>
+                                                    <span class="label label-rounded label-default" ng-click="plusGoods(item)"><i class="fa fa-plus"></i></span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="btn-group text-right">
+                                                        <button class="btn btn-default btn-xs" type="button" ng-click="removeItem(item)">
+                                                            <i class="fa fa-remove"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="7" id="cartItog">
+                                                    <b>ИТОГО:</b><br/>
+                                                    <span>Скидка: {{discount}} <i class="fa fa-rub"></i></span><br/>
+                                                    <span>К оплате: {{itog}} <i class="fa fa-rub"></i></span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="btn-group text-right">
+                                    <button class="btn btn-danger btn-mini" type="button" ng-click="removeSelected()">
+                                        <i class="fa fa-remove"> Удалить выбранные</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-md-offset-8">
+                                <button class="btn btn-success btn-mini" type="button" ng-click="order()">
+                                    <i class="fa fa-briefcase"> Оформить заказ</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

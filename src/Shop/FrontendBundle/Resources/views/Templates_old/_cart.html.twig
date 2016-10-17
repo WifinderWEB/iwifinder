@@ -1,0 +1,52 @@
+{% verbatim %}
+<div ng-controller="CartInfoCtrl">
+    <div class="navbar-btn btn-group" id="{{formId}}">
+        <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle" aria-expanded="false">
+            <span class="fa fa-shopping-cart fs14 va-m"></span>
+            <span class="badge badge-danger ng-hide" ng-show="count > 0">{{count}}</span>
+        </button>
+        <div class="dropdown-menu dropdown-persist w350 animated animated-shorter fadeIn ng-hide" role="menu" ng-show="count > 0">
+            <div class="panel mbn">
+                <div class="panel-menu">
+                    <span class="panel-icon"><i class="fa fa-shopping-cart"></i></span>
+                    <span class="panel-title fw600"> Корзина</span>
+                    <button class="btn btn-default btn-xs pull-right" type="button" ng-click="refresh()">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </div>
+                <div class="panel-body panel-scroller scroller-navbar scroller-overlay scroller-pn pn scroller scroller-active">
+                    <div class="scroller-bar">
+                        <div class="scroller-track">
+                            <div class="scroller-handle">
+                        </div>
+                    </div>
+                </div>
+                <div class="scroller-content">
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="item in goods">
+                            <a class="media-left" href="#">
+                                <img ng-src="//{{item.image_path}}" class="mw40" alt="{{item.image_alt}}">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="media-heading">арт.
+                                    <small class="text-muted">- {{item.article}}</small>
+                                </h5> {{item.title}}
+                            </div>
+                            <div class="media-right">
+                                <button class="btn btn-default btn-xs" type="button" ng-click="removeItem(item)">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-footer text-center p7">
+                <a href="" class="btn btn-default btn-xs btn-mini" ng-click="clear()"> Очистить </a>
+                <a href="" class="btn btn-success btn-xs btn-mini" ng-click="open()"> Открыть </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view="cart"></div>
+{% endverbatim %}

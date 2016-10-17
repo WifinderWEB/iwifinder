@@ -1,0 +1,26 @@
+pi_zone_backend:
+    path:     /admin
+    defaults: { _controller: PiZoneBackendBundle:Backend:index }
+
+pi_zone_backend_1:
+    path:     /admin/
+    defaults: { _controller: PiZoneBackendBundle:Backend:index }
+
+pi_zone_backend_main_template:
+    path:     /admin/tmpl/main
+    defaults: { _controller: PiZoneBackendBundle:Backend:getMainTemplate }
+
+pi_zone_backend_login_template:
+    path:     /admin/tmpl/content.{_format}
+    defaults: { _controller: PiZoneBackendBundle:Backend:getContentTemplate, _format: html }
+
+pi_zone_backend_login_template:
+    path:     /admin/tmpl/login
+    defaults: { _controller: PiZoneBackendBundle:Backend:getLoginTemplate }
+
+pi_zone_upload_file:
+    path:    /api/upload_file
+    defaults: { _controller: PiZoneBackendBundle:Backend:uploadFile, _format: json }
+    methods:  POST
+    requirements:
+        _format:  json|yml

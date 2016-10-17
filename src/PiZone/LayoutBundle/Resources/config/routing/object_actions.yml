@@ -1,0 +1,13 @@
+layout_delete:
+    path:     /{id}/delete/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:Action:delete", _format: json }
+    requirements:
+        id:       \d+
+        _format:  json|xml
+
+layout_check_use:
+    path:     /{id}/checkuse
+    defaults: { _controller: "PiZoneLayoutBundle:Action:checkUse", _format: json }
+    requirements:
+        id:       \d+
+        _format:  json|xml

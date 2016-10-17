@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="52px" height="32px" viewBox="0 0 52 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>MasterPass</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="41.2200928%" cy="21.0998535%" fx="41.2200928%" fy="21.0998535%" r="72.6098713%" id="radialGradient-1">
+            <stop stop-color="#E40521" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#B0031A" offset="100%"></stop>
+        </radialGradient>
+        <path id="path-2" d="M32,16.0039331 C32,7.16821 25.504,0 16.5253334,0 C7.53600008,0 0,7.16558829 0,16.0039333 C0,24.8344125 7.53866667,32 16.5253333,32 C25.5013333,32 32,24.8370341 32,16.0039331 Z"></path>
+        <radialGradient cx="40.5731201%" cy="22.5020733%" fx="40.5731201%" fy="22.5020733%" r="70.7724903%" id="radialGradient-3">
+            <stop stop-color="#FF9600" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FF7F00" offset="100%"></stop>
+        </radialGradient>
+        <path id="path-4" d="M36.0091781,32.0024615 C44.8515939,32.0024615 52,24.8389085 52,16.0050837 C52,7.16863655 44.8515939,0.00246153846 36.0091781,0.00246153846 C27.1746291,0.00246153846 20,7.16601447 20,16.0050837 C20,24.8362866 27.1746291,32.0024615 36.0091781,32.0024615 Z"></path>
+        <linearGradient x1="50%" y1="-1.5967753%" x2="50%" y2="98.8883739%" id="linearGradient-5">
+            <stop stop-color="#C30C17" offset="0%"></stop>
+            <stop stop-color="#FFC525" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="MasterPass" sketch:type="MSArtboardGroup">
+            <g id="Mask">
+                <use fill="#FF4000" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
+                <use fill="url(#radialGradient-1)" xlink:href="#path-2"></use>
+            </g>
+            <g id="Mask">
+                <use fill="#FFD631" sketch:type="MSShapeGroup" xlink:href="#path-4"></use>
+                <use fill="url(#radialGradient-3)" xlink:href="#path-4"></use>
+            </g>
+            <path d="M26.2000008,28.679796 C29.6682447,25.6147877 32.0966797,21.1273221 32.0321181,16.0279298 C31.9675564,10.9285374 29.4862196,6.14793846 26.210829,3.4000001 C21.7674696,6.87829871 19.9597439,11.890126 19.9750434,16.0357423 C19.9903429,20.1813586 21.6427951,25.125369 26.2000008,28.679796 Z" id="Mask" fill="url(#linearGradient-5)" sketch:type="MSShapeGroup" transform="translate(26.004161, 16.039898) scale(1, -1) translate(-26.004161, -16.039898) "></path>
+        </g>
+    </g>
+</svg>

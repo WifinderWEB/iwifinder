@@ -1,0 +1,35 @@
+<h2><span class="glyphicon glyphicon-list"></span> Контент</h2>
+<div class="panel invoice-panel">
+    <div class="panel-heading">
+        <div class="panel-header-menu pull-right mr10" ng-include="pathToTmpl + 'include/_list_panel_header_menu.html'"></div>
+    </div>
+    <div class="panel-body">
+        <div class="row mb20" id="invoice-table">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th field-sort-pizone field-alias="'id'" field-label="'ID'" field-type="'int'"></th>
+                        <th field-sort-pizone field-alias="'title'" field-label="'Заголовок'" field-type="'string'"></th>
+                        <th field-sort-pizone field-alias="'alias'" field-label="'Псевдоним'" field-type="'string'"></th>
+                        <th field-sort-pizone field-alias="'anons'" field-label="'Анонс'" field-type="'string'"></th>
+                        <th>Активен?</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="content in list">
+                        <td><b>{{content.id}}</b></td>
+                        <td>{{content.title}}</td>
+                        <td>{{content.alias}}</td>
+                        <td>{{content.anons}}</td>
+                        <td button-active-pizone ng-model="content"></td>
+                        <td list-button-group-pizone="'content'" ng-model="content"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer" ng-include="pathToTmpl + 'include/_list_footer.html'"></div>
+</div>

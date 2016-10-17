@@ -1,0 +1,308 @@
+<section class="steps">
+    <div class="wrapper">
+        <ul class="steps-nav">
+            <li rel="step1" data-step="2" class="">Доставка</li>
+            <li rel="step2" data-step="3" class="active">Оформление</li>
+            <li rel="step3" data-step="4" class="disabled">Оплата</li>
+            <li rel="step4" data-step="5" class="disabled">Подтверждение</li>
+        </ul>
+
+        <div class="order-info">
+            <h4>Ваш заказ:</h4>
+            <dl>
+                <dt>Товаров <a href="/personal/cart/">(4)</a> на сумму:</dt>
+                <dd class="price">2 261 <span class="rub" title="руб.">₽</span></dd>
+                <dt>Стоимость доставки:</dt>
+                <dd class="price">400 <span class="rub" title="руб.">₽</span></dd>
+                <dt class="city">Ваш город:</dt>
+                <dd><a href="#" class="change_user_city">
+                        Москва </a></dd>
+            </dl>
+        </div>
+
+        <div class="step-content">
+            <form method="post" action="/personal/order/make/index.php" name="order_form" id="step2"
+                  class="step active">
+                <input type="hidden" name="sessid" id="sessid_1" value="ff0498ceac28d630f6cbe986e48eca73">
+
+
+                <h2>Оформление</h2>
+
+                <style type="text/css">
+                    label[data-code="HOUSE_DELIV"] span,
+                    label[data-code="APARTMENT_DELIV"] span,
+                    label[data-code="INDEX_DELIV"] span {
+                        position: relative;
+                    }
+
+                    label[data-code="HOUSE_DELIV"] sup,
+                    label[data-code="APARTMENT_DELIV"] sup,
+                    label[data-code="INDEX_DELIV"] sup {
+                        position: absolute;
+                    }
+
+                    .note.Passport {
+                        width: 400px;
+                        font-weight: 600;
+                        line-height: 20px;
+                        margin: -8px 0 -25px 0;
+                    }
+
+                    #field_delivery_date, #field_PASPORT_DATE {
+                        background: url("/bitrix/templates/shop/img/datepicker.png") no-repeat 97% 38% !important;
+                    }
+                </style>
+
+                <input type="hidden" name="BUYER_STORE" value="18">
+
+                <input type="hidden" name="delivery_min_date" value="8">
+
+
+                <input type="hidden" value="0" name="ORDER_PROP_52" id="field_cardholder">
+
+
+                <input type="hidden" value="0" name="ORDER_PROP_51" id="field_Masked_PAN">
+
+
+                <input type="hidden" value="" name="ORDER_PROP_47" id="field_PUNKT">
+
+
+                <input type="hidden" value="0" name="ORDER_PROP_59" id="field_amount_bank">
+
+
+                <label data-code="ВидДеятельности">
+        <span class="title">
+                                        Вид деятельности:
+                                </span>
+
+
+                    <br>
+
+
+                    <input type="hidden" name="____ORDER_PROP_82" value="">
+                    <select name="ORDER_PROP_82" size="1">
+                        <option value=""></option>
+                        <option value="1">Монтаж</option>
+                        <option value="2">Торговля</option>
+                        <option value="3">Интеграция</option>
+                        <option value="5">Проектирование</option>
+                        <option value="6">Строительство</option>
+                        <option value="4">Другое</option>
+                    </select><br>
+
+
+                </label>
+
+
+                <label data-code="location">
+        <span class="title">
+                                        Город:                                         <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+
+                    <a href="#" class="change_user_city"><input type="text" value="Москва" id="field_location"
+                                                                disabled="disabled"></a>
+                    <input type="hidden" value="670" name="ORDER_PROP_18" rel="Москва">
+
+
+                </label>
+
+
+                <label data-code="delivery_date">
+        <span class="title">
+                                        Дата доставки:
+                                        <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+                    <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_22"
+                           placeholder="например: 17.10.2016" id="field_delivery_date" required="required"
+                           class="hasDatepicker">
+                    <br>
+
+                </label>
+
+
+                <label data-code="email">
+        <span class="title">
+                                        E-mail:
+                                        <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+                    <input type="email" maxlength="250" size="" value="" name="ORDER_PROP_28"
+                           placeholder="например: ivanov.ivan@mail.ru" id="field_email" required="required">
+                    <br>
+
+                </label>
+
+
+                <label data-code="phone">
+        <span class="title">
+                                        Телефон:
+                                        <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+                    <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_30"
+                           placeholder="например: +7 800 775 30 00" id="field_phone" required="required">
+                    <br>
+
+                </label>
+
+
+                <label data-code="person_fname">
+        <span class="title">
+                                        Имя:
+                                        <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+                    <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_41"
+                           placeholder="например: Иван" id="field_person_fname" required="required">
+                    <br>
+
+                </label>
+
+
+                <label data-code="person_lname">
+        <span class="title">
+                                        Фамилия:
+                                        <sup>*</sup>
+                    </span>
+
+
+                    <br>
+
+                    <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_58"
+                           placeholder="например: Иванов" id="field_person_lname" required="required">
+                    <br>
+
+                </label>
+
+
+                <div class="label"> Адрес доставки :<br>
+
+                    <label data-code="STREET_DELIV">
+        <span class="title">
+                                        Улица:
+                                        <sup>*</sup>
+                    </span>
+
+
+                        <br>
+
+                        <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_33" placeholder=""
+                               id="field_STREET_DELIV" required="required" class="long">
+
+
+                    </label>
+
+
+                    <label data-code="HOUSE_DELIV">
+        <span class="title">
+                                        Дом:
+                                        <sup>*</sup>
+                    </span>
+
+
+                        <br>
+
+                        <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_34" placeholder=""
+                               id="field_HOUSE_DELIV" required="required">
+
+
+                    </label>
+
+
+                    <label data-code="APARTMENT_DELIV">
+        <span class="title">
+                                        Квартира:
+                                </span>
+
+
+                        <br>
+
+                        <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_35" placeholder=""
+                               id="field_APARTMENT_DELIV">
+
+
+                    </label>
+
+
+                    <label data-code="INDEX_DELIV">
+        <span class="title">
+                                        Индекс:
+                                </span>
+
+
+                        <br>
+
+                        <input type="text" maxlength="250" size="" value="" name="ORDER_PROP_36" placeholder=""
+                               id="field_INDEX_DELIV">
+
+
+                    </label>
+
+
+                </div>
+
+
+                <span class="necessarily_field">
+    <div class="form-required-description"><sup>*</sup> - обязательные для заполнения</div>
+    <br class="clear">
+    <input onclick="yaCounter22459345.reachGoal('step3');ga('send', 'pageview', { 'page': '/order/step3/'}); return true;"
+           type="submit" class="next" value="Продолжить" name="contButton">
+</span>
+
+                <br class="clear">
+
+                <div class="confirm"
+                     style="color: #797979; font-size: 10px; font-weight: 500; line-height: 12px; padding-bottom: 5px; padding-top: 10px;">
+                    <span class="input checkbox checked" rel="checkboxaccept_rules"></span>
+                    Настоящим я даю разрешение ООО «Лайта-Центр» в целях заключения и исполнения договора купли-продажи
+                    обрабатывать - собирать, записывать, систематизировать, накапливать,
+                    хранить, уточнять (обновлять, изменять), извлекать, использовать, передавать (в том числе поручать
+                    обработку другим лицам), обезличивать, блокировать, удалять, уничтожать
+                    - мои персональные данные: фамилию, имя, номера домашнего и мобильного телефонов, адрес электронной
+                    почты. Также я разрешаю ООО "Лайта-Центр" в целях информирования
+                    о товарах, работах, услугах осуществлять обработку вышеперечисленных персональных данных и
+                    направлять на указанный мною адрес электронной почты и/или на номер мобильного
+                    телефона рекламу и информацию о товарах, работах, услугах ООО "Лайта-Центр" и его партнеров.
+                    Согласие может быть отозвано мною в любой момент
+                    путем направления письменного уведомления по адресу ООО "Лайта-Центр".
+                </div>
+
+                <input type="hidden" name="ORDER_PRICE" value="2261">
+                <input type="hidden" name="ORDER_WEIGHT" value="3765">
+                <input type="hidden" name="SKIP_FIRST_STEP" value="N">
+                <input type="hidden" name="SKIP_SECOND_STEP" value="N">
+                <input type="hidden" name="SKIP_THIRD_STEP" value="N">
+                <input type="hidden" name="SKIP_FORTH_STEP" value="N">
+
+                <input type="hidden" name="PERSON_TYPE" value="1">
+                <input type="hidden" name="BACK" value="">
+
+
+                <input type="hidden" name="DELIVERY_ID" value="2">
+
+
+                <input type="hidden" name="CurrentStep" value="4">
+
+
+            </form>
+
+        </div>
+    </div>
+</section>

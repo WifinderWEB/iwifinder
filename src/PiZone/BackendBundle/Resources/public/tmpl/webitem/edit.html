@@ -1,0 +1,22 @@
+<h2><span class="glyphicon glyphicon-edit"></span> Редактировать элемент - "{{title}}"</h2>
+<div class="panel">
+    <form class="form-horizontal admin-form" role="form" id="{{formId}}" ng-submit="Click.Submit()" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="panel-heading">
+            <ul class="nav panel-tabs-border panel-tabs panel-tabs-left" id="myTab">
+                <li ng-repeat="tab in tabs" ng-class="{'active': $first}">
+                    <a href="#tab_{{$index}}" tab-pizone>{{tab.title}}</a>
+                </li>
+            </ul>
+            <div class="panel-header-menu pull-right mr10" ng-include="pathToTmpl + 'include/_form_panel_header_menu.html'"></div>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content pn br-n">
+                <div ng-repeat="tab in tabs" id="tab_{{$index}}" class="tab-pane" ng-class="{'active': $first}">
+                    <div class="form-group" ng-repeat="field in tab.fields" ng-class="{'has-error': !field.valid}" ng-include="field.template"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="panel-footer" ng-include="pathToTmpl + 'include/_form_footer.html'"></div>
+</div>

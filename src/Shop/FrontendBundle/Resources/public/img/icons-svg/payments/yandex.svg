@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>Y.Wallet</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Y.Wallet" sketch:type="MSArtboardGroup">
+            <g id="yandex.dengi_product-icon_rgb" sketch:type="MSLayerGroup" transform="translate(4.000000, 0.000000)">
+                <path d="M3.78035279,10.2273835 C6.78810004,7.93496774 16.428595,0.101046595 16.428595,0.101046595 L16.428595,13.1783799 L23.7601474,13.1783799 L23.7601474,32 L2.29029574,32 C1.03085213,32 0,30.9473262 0,29.661362 L0.000336989908,15.9244158 C0.000336989908,14.1331039 0.14748925,12.9964731 3.78035279,10.2273835 Z" id="Fill-1" fill="#F9C637" sketch:type="MSShapeGroup"></path>
+                <path d="M16.428595,13.1783799 L16.428595,20.7558423 L2.95663712,30.1267957 L19.9896797,24.4680717 L19.9896797,13.1783799 L16.428595,13.1783799" id="Fill-4" fill="#C8A332" sketch:type="MSShapeGroup"></path>
+                <path d="M10.272351,12.7864659 C11.0601211,11.827957 12.2106047,11.489491 12.8424607,12.030853 C13.4742045,12.5722151 13.3479456,13.7883297 12.5600632,14.746724 C11.7726301,15.7051183 10.6218096,16.0431254 9.98995349,15.5017634 C9.35820974,14.9605161 9.48480562,13.7448602 10.272351,12.7864659" id="Fill-5" fill="#000106" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

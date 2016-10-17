@@ -1,0 +1,19 @@
+<div class="popup-basic bg-none mfp-with-anim mfp-hide">
+    <div class="panel">
+        <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
+            <span class="panel-title" ng-bind-html="title"></span>
+        </div>
+        <div class="panel-body">
+            <div ng-bind-html="message"></div>
+            <hr class="short alt" ng-if="info">
+            <div ng-bind-html="info" id="{{infoBlockId}}" ng-if="info"></div>
+        </div>
+        <div class="panel-footer text-right">
+            <button class="btn btn-dark light" type="button" ng-click="Click.Cancel()">Отменить</button>
+            <button class="btn btn-danger" type="button" ng-click="Click.Confirm()">Да удалить</button>
+        </div>
+    </div>
+</div>

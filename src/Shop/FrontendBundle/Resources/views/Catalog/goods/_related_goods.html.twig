@@ -1,0 +1,37 @@
+<section class="product-list with_buy available">
+    <div class="wrapper">
+        <h5 class="section-title">Вместе с товаром покупают</h5>
+        <ul>
+            {% for item in content.related %}
+            <li>
+                {% if item.category is defined and item.category.alias is defined %}
+                    <a href="/catalog/{{item.category.alias}}/{{ item.alias }}" title="{{ item.title }}" target="_blank">
+                {% else %}
+                    <a href="/catalog/{{item.id}}/{{ item.alias }}" title="{{ item.title }}" target="_blank">
+                {% endif %}
+                    <span class="title">{{ item.title }}</span>
+                    <span class="img">
+                        <img class="lazy" src="//{{ item.image_path }}"
+                             {% if item.alt_image is defined %}alt="{{ item.alt_image }}"{% endif %}
+                             {% if item.alt_image is defined %}title="{{ item.title_image }}"{% endif %}
+                        >
+                    </span>
+                </a>
+                {% if item.sale is defined %}
+                    <span class="price">
+                        {% if item.sale is defined and item.sale.discount is defined %}
+                            {{ item.sale.retail_price - item.sale.retail_price/100*item.sale.discount }}
+                        {% else %}
+                            {{ item.sale.retail_price }}
+                        {% endif %}
+                        <span class="rub" title="руб.">₽</span>
+                    </span>
+                {% endif %}
+                <span class="add_to_favorite action-button" title="Добавить в закладки"></span>
+
+                <a href="javascript:void(0);" class="addtocart action-button">Купить</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

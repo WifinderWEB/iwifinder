@@ -1,0 +1,12 @@
+<h2><span class="glyphicon glyphicon-edit"></span> Новое меню</h2>
+<div class="panel">
+    <div class="panel-heading">
+        <div class="panel-header-menu pull-right mr10" ng-include="pathToTmpl + 'include/_form_panel_header_menu.html'"></div>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal admin-form" role="form" id="{{formId}}" ng-submit="Click.Submit()">
+            <div class="form-group" ng-repeat="field in fields" ng-class="{'has-error': !field.valid}" ng-include="field.template"></div>
+        </form>
+    </div>
+    <div class="panel-footer" ng-include="pathToTmpl + 'include/_form_footer.html'"></div>
+</div>

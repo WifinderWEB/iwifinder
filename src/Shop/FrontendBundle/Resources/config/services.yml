@@ -1,0 +1,7 @@
+parameters:
+#    shop_frontend.example.class: Esser\FrontendBundle\Example
+
+services:
+#    shop_frontend.example:
+#        class: %shop_frontend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

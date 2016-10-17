@@ -1,0 +1,6 @@
+<label class="block switch switch-primary">
+    <div class="col-lg-3 control-label">{{field.label}}</div>
+    <input id="{{field.id}}" type="checkbox" name="{{field.full_name}}" ng-model="field.checked"/>
+    <label data-on="Да" data-off="Нет" for="{{field.id}}" class="ml15"></label>
+</label>
+<em for="lastname" class="state-error" ng-repeat="error in field.errors" ng-if="!field.valid">{{error}}</em>

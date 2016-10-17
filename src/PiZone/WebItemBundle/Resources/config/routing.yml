@@ -1,0 +1,15 @@
+pi_zone_webitem_list:
+    resource: "@PiZoneWebItemBundle/Resources/config/routing/list.yml"
+    prefix:   /api/web_item
+
+pi_zone_webitem_new:
+    resource: "@PiZoneWebItemBundle/Resources/config/routing/new.yml"
+    prefix:   /api/web_item
+
+pi_zone_webitem_edit:
+    resource: "@PiZoneWebItemBundle/Resources/config/routing/edit.yml"
+    prefix:   /api/web_item
+
+pi_zone_webitem_object_actions:
+    resource: "@PiZoneWebItemBundle/Resources/config/routing/object_actions.yml"
+    prefix:   /api/web_item

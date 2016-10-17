@@ -1,0 +1,341 @@
+<div class="portfolio-modal modal fade in" id="{{orderModalId}}" tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-content">
+        <div class="close-modal" ng-click="closeOrder()">
+            <div class="lr">
+                <div class="rl" ></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" name="{{orderInfo._token.full_name}}" value="{{orderInfo._token.value}}"/>
+                            <input type="hidden" name="{{orderInfo.itog.full_name}}" value="{{itog}}"/>
+                            <input type="hidden" name="{{orderInfo.discount.full_name}}" value="{{discount}}"/>
+                        <!-- Project Details Go Here -->
+                        <h2>Оформление заказа</h2>
+
+                        <div class="panel" id="personalData">
+                            <div class="panel-heading">
+                                <h3>Ф.И.О.</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <div class="col-md-4">
+                                        <div class="form-group" ng-class="{'has-error': !orderInfo.lastName.valid}">
+                                            <div class="bs-component">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <input class="form-control" type="text" placeholder="Фамилия"
+                                                           ng-model="orderInfo.lastName.value"
+                                                           name="{{orderInfo.lastName.full_name}}"
+                                                           id="{{orderInfo.lastName.id}}">
+                                                </div>
+                                                <span class="help-block mt5 text-danger" ng-if="!orderInfo.lastName.valid" ng-repeat="error in orderInfo.lastName.errors">
+                                                    <i class="fa fa-warning"></i> {{error}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" ng-class="{'has-error': !orderInfo.firstName.valid}">
+                                            <div class="bs-component">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <input class="form-control" type="text" placeholder="Имя"
+                                                           ng-model="orderInfo.firstName.value"
+                                                           name="{{orderInfo.firstName.full_name}}"
+                                                           id="{{orderInfo.firstName.id}}">
+                                                </div>
+                                                <span class="help-block mt5 text-danger" ng-if="!orderInfo.firstName.valid" ng-repeat="error in orderInfo.firstName.errors">
+                                                    <i class="fa fa-warning"></i> {{error}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" ng-class="{'has-error': !orderInfo.middleName.valid}">
+                                            <div class="bs-component">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <input class="form-control" type="text" placeholder="Отчество"
+                                                           ng-model="orderInfo.middleName.value"
+                                                           name="{{orderInfo.middleName.full_name}}"
+                                                           id="{{orderInfo.middleName.id}}">
+                                                </div>
+                                                <span class="help-block mt5 text-danger" ng-if="!orderInfo.middleName.valid" ng-repeat="error in orderInfo.middleName.errors">
+                                                    <i class="fa fa-warning"></i> {{error}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel" id="contact">
+                            <div class="panel-heading">
+                                <h3>Контактные данные</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{'has-error': !orderInfo.email.valid}">
+                                            <div class="bs-component">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input class="form-control" type="text" placeholder="Email address"
+                                                           ng-model="orderInfo.email.value"
+                                                           name="{{orderInfo.email.full_name}}"
+                                                           id="{{orderInfo.email.id}}">
+                                                </div>
+                                                <span class="help-block mt5 text-danger" ng-if="!orderInfo.email.valid" ng-repeat="error in orderInfo.email.errors">
+                                                    <i class="fa fa-warning"></i> {{error}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{'has-error': !orderInfo.phone.valid}">
+                                            <div class="bs-component">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-phone-square"></i>
+                                                    </span>
+                                                    <input class="form-control" type="text" placeholder="Телефон" id="shop_apibundle_order_phone"
+                                                           ng-model="orderInfo.phone.value"
+                                                           name="{{orderInfo.phone.full_name}}"
+                                                           id="{{orderInfo.phone.id}}">
+                                                </div>
+                                                <span class="help-block mt5 text-danger" ng-if="!orderInfo.phone.valid" ng-repeat="error in orderInfo.phone.errors">
+                                                    <i class="fa fa-warning"></i> {{error}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel" id="address">
+                            <div class="panel-heading">
+                                <h3>Адрес</h3>
+                            </div>
+                            <div class="panel-body">
+                            <div class="table-responsive">
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.country.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Страна"
+                                                       ng-model="orderInfo.country.value"
+                                                       name="{{orderInfo.country.full_name}}"
+                                                       id="{{orderInfo.country.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.country.valid" ng-repeat="error in orderInfo.country.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.region.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Область"
+                                                       ng-model="orderInfo.region.value"
+                                                       name="{{orderInfo.region.full_name}}"
+                                                       id="{{orderInfo.region.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.region.valid" ng-repeat="error in orderInfo.region.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.city.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Населенный пункт"
+                                                       ng-model="orderInfo.city.value"
+                                                       name="{{orderInfo.city.full_name}}"
+                                                       id="{{orderInfo.city.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.city.valid" ng-repeat="error in orderInfo.city.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.street.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Улица"
+                                                       ng-model="orderInfo.street.value"
+                                                       name="{{orderInfo.street.full_name}}"
+                                                       id="{{orderInfo.street.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.street.valid" ng-repeat="error in orderInfo.street.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.house.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-building-o"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Дом"
+                                                       ng-model="orderInfo.house.value"
+                                                       name="{{orderInfo.house.full_name}}"
+                                                       id="{{orderInfo.house.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.house.valid" ng-repeat="error in orderInfo.house.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.room.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-building-o"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Квартира"
+                                                       ng-model="orderInfo.room.value"
+                                                       name="{{orderInfo.room.full_name}}"
+                                                       id="{{orderInfo.room.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.room.valid" ng-repeat="error in orderInfo.room.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{'has-error': !orderInfo.postcode.valid}">
+                                        <div class="bs-component">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-certificate"></i>
+                                                </span>
+                                                <input class="form-control" type="text" placeholder="Почтовый индекс" id="shop_apibundle_order_postcode"
+                                                       ng-model="orderInfo.postcode.value"
+                                                       name="{{orderInfo.postcode.full_name}}"
+                                                       id="{{orderInfo.postcode.id}}">
+                                            </div>
+                                            <span class="help-block mt5 text-danger" ng-if="!orderInfo.postcode.valid" ng-repeat="error in orderInfo.postcode.errors">
+                                                <i class="fa fa-warning"></i> {{error}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="panel" id="cart">
+                            <div class="panel-heading">
+                                <h3>Содержимое заказа</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                                        <thead>
+                                        <tr class="bg-light">
+                                            <th class="">Image</th>
+                                            <th class="w350">Product Title</th>
+                                            <th class="">Article</th>
+                                            <th class="">Price</th>
+                                            <th class="">Discount</th>
+                                            <th class="" style="width: 130px">Count</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="item in goodsInCart">
+                                            <td class="w100">
+                                                <img class="img-responsive mw40 ib" title="{{item.image_title}}" ng-src="//{{item.image_path}}">
+                                            </td>
+                                            <td class="">{{item.title}}</td>
+                                            <td class="">{{item.article}}</td>
+                                            <td class="">{{item.price}} <i class="fa fa-rub"></i></td>
+                                            <td>{{item.discount}}%</td>
+                                            <td class="">
+                                                {{item.count}}
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][goods_id]" value="{{item.id}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][title]" value="{{item.title}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][alias]" value="{{item.alias}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][article]" value="{{item.article}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][price]" value="{{item.price}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][discount]" value="{{item.discount}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][count]" value="{{item.count}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][image_path]" value="{{item.image_path}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][title_image]" value="{{item.title_image}}"/>
+                                                <input type="hidden" name="{{orderInfo.goods.full_name}}[{{$index}}][alt_image]" value="{{item.alt_image}}"/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="7" id="cartItog">
+                                                <b>ИТОГО:</b><br/>
+                                                <span>Скидка: {{discount}} <i class="fa fa-rub"></i></span><br/>
+                                                <span>К оплате: {{itog}} <i class="fa fa-rub"></i></span>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="btn-group text-right">
+                                    <button type="button" class="btn btn-dark btn-block" ng-click="back()">
+                                        <i class="fa fa-check"> Вернуться в карзину</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="btn-group text-right">
+                                    <button class="btn btn-success btn-mini" type="button" ng-click="submit()">
+                                        <i class="fa fa-check"> Заказать</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

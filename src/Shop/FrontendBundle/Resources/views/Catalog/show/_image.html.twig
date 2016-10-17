@@ -1,0 +1,9 @@
+{% if (content.big_image_path is defined and content.big_image_path) or (content.article is defined and content.article) or (content.approval is defined and content.approval) %}
+    {% if content.big_image_path is defined %}
+        <div class="imgCatalog">
+            <a id="single_image" href="http://{{ content.big_image_path }}">
+                <img src="http://{{ content.image_path }}"/>
+            </a>
+        </div>
+    {% endif %}
+{% endif %}

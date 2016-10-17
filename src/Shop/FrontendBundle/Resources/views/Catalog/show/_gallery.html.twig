@@ -1,0 +1,60 @@
+<div class="row-fluid catalogInfo">
+    <div class="span12">
+        {% if content.img_gallery is defined %}
+            <div class="row-fluid">
+                <h3>Фотогалерея</h3>
+                <hr/>
+                {% for one in content.img_gallery %}
+                    <h4>{{ one.title }}</h4>
+                    {% if one.description is defined %}
+                        <div>
+                            {{ one.description|raw }}
+                        </div>
+                    {% endif %}
+                    {% if one.images is defined %}
+                        <ul class="thumbnails">
+                            {% for img in one.images %}
+                                <li class="span3">
+                                    <a href="http://{{ img.image_path }}" class="thumbnail groupImages"
+                                       rel="group1">
+                                        {% set alt = img.title %}
+                                        {% if img.alt is defined %}
+                                            {% set alt = img.alt %}
+                                        {% endif %}
+                                        <img alt="{{ alt }}" src="http://{{ img.image_path }}"/>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if content.video_gallery is defined %}
+            <div class="row-fluid">
+                <h3>Видеогалерея</h3>
+                <hr/>
+                {% for one in content.video_gallery %}
+                    <h4>{{ one.title }}</h4>
+                    {% if one.description is defined %}
+                        <div>
+                            {{ one.description|raw }}
+                        </div>
+                    {% endif %}
+                    {% if one.videos is defined %}
+                        <ul class="thumbnails">
+                            {% for img in one.videos %}
+                                <li class="span3">
+                                    <a href="{{ img.url_video }}" class="thumbnail groupImages" rel="group2">
+                                        <img alt="{{ img.title }}" src="http://{{ img.image_path }}"/>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

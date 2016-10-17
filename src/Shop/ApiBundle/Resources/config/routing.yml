@@ -1,0 +1,40 @@
+shop_api_catalog_search:
+    path:  /search/
+    defaults: { _controller: ShopApiBundle:Catalog:Search }
+
+shop_api_get_cart_info:
+    path:     /getCartInfo/
+    defaults: { _controller: ShopApiBundle:Cart:getCartInfo }
+
+shop_api_add_to_cart:
+    path:     /addToCart/{alias}
+    defaults: { _controller: ShopApiBundle:Cart:addToCart }
+
+shop_api_clear_cart:
+    path:     /clearCart/
+    defaults: { _controller: ShopApiBundle:Cart:clearCart }
+
+shop_api_remove_from_cart:
+    path:     /removeFromCart/{id}
+    defaults: { _controller: ShopApiBundle:Cart:removeFromCart }
+
+shop_api_set_count_goods_in_cart:
+    path:     /setCountGoods/{id}/{count}
+    defaults: { _controller: ShopApiBundle:Cart:setCountGoods }
+    requirements:
+        id: \d+
+        count: \d+
+
+shop_api_get_form_order:
+    path:     /getFormOrder/
+    defaults: { _controller: ShopApiBundle:Order:getForm }
+
+shop_api_order:
+    path:     /order/
+    defaults: { _controller: ShopApiBundle:Order:create }
+    methods:  [POST]
+
+shop_api_filter:
+    path:     /filter
+    defaults: { _controller: ShopApiBundle:Catalog:filter }
+    methods:  [POST]

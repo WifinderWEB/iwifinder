@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title>Esserbyhoneywell - shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="fb:app_id" content="">
+    <meta property="og:type" content="product.group">
+    <meta property="og:title" content="">
+    <meta property="og:image" content="https://img.layta.ru/9b7/1.jpg">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+        {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/frontend.min.css'
+        'bundles/shopfrontend/css/page.css'
+        'bundles/shopfrontend/css/template.css'
+        'bundles/shopfrontend/css/mainpage.css'
+        %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index" ng-app="shop">
+
+{% include "ShopFrontendBundle:Templates:_header.html.twig" %}
+
+<!-- Navigation -->
+{% block breadcrumbs %}
+{#{% include "ShopFrontendBundle:Menu:_breadcrumbs.html.twig" %}#}
+{% endblock %}
+
+<!-- Hero Content -->
+{% block body %}
+{% endblock %}
+
+<!-- Footer -->
+{% include('ShopFrontendBundle:Templates:_footer.html.twig') %}
+
+{% block javascripts %}
+    {% javascripts filter='?yui_js' output='assetic/js/compiled/frontend.min.js'
+    'bundles/shopfrontend/js/jquery.min.js'
+    'bundles/shopfrontend/js/jquery.easing.min.js'
+    'bundles/shopfrontend/js/jquery.maskedinput.min.js'
+    'bundles/shopfrontend/js/jquery.fancybox.pack.min.js'
+    'bundles/shopfrontend/js/jquery.quicksand.min.js'
+    'bundles/shopfrontend/js/jquery-animate-css-rotate-scale.min.js'
+    'bundles/shopfrontend/js/jquery.lazyload.min.js'
+    'bundles/shopfrontend/js/slick.min.js'
+    'bundles/shopfrontend/js/bootstrap.min.js'
+    'bundles/shopfrontend/js/jqBootstrapValidation.js'
+    'bundles/shopfrontend/js/contact_me.js'
+    'bundles/shopfrontend/js/main.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts filter='?yui_js' output='assetic/js/compiled/angular.min.js'
+    'bundles/pizonebackend/js/lib/bower_components/angular/angular.js'
+    'bundles/pizonebackend/js/lib/bower_components/angular-cookies/angular-cookies.js'
+    'bundles/pizonebackend/js/lib/bower_components/ngstorage/ngStorage.js'
+    'bundles/pizonebackend/js/lib/bower_components/angular-sanitize/angular-sanitize.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript" src="{{ asset('bundles/pizonebackend/js/lib/bower_components/angular-ui-router/release/angular-ui-router.js') }}"></script>
+
+    {% javascripts filter='?yui_js' output='assetic/js/compiled/shop.min.js'
+    'bundles/pizonebackend/js/service/event.dispatcher.js'
+    'bundles/pizonebackend/js/service/exception.js'
+    'bundles/pizonebackend/js/service/notify.js'
+    'bundles/pizonebackend/js/admindesigns/pnotify.js'
+    'bundles/pizonebackend/js/service/loader.js'
+    'bundles/shopfrontend/js/app/service/diff.js'
+    'bundles/shopfrontend/js/app/app.config.js'
+    'bundles/shopfrontend/js/app/controller/main.js'
+    'bundles/shopfrontend/js/app/controller/cart.js'
+    'bundles/shopfrontend/js/app/controller/cartInfo.js'
+    'bundles/shopfrontend/js/app/controller/cart.info.bottom.js'
+    'bundles/shopfrontend/js/app/controller/order.js'
+    'bundles/shopfrontend/js/app/controller/orderCreated.js'
+    'bundles/shopfrontend/js/app/controller/goods.js'
+    'bundles/shopfrontend/js/app/controller/catalog.js'
+    'bundles/shopfrontend/js/app/controller/goods.list.js'
+    'bundles/shopfrontend/js/app/app.controller.js'
+    'bundles/shopfrontend/js/app/app.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,7 @@
+services:
+    pizone_web_item_bundle.twig_extension.webitem:
+        class: PiZone\WebItemBundle\Twig\WebItemsExtension
+        public: false
+        arguments:    ["@doctrine"]
+        tags:
+            - { name: twig.extension }

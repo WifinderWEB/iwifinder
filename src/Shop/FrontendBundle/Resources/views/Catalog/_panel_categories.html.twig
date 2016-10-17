@@ -1,0 +1,21 @@
+<div class="panel view_filter">
+    {#<div class="compare">#}
+        {#<span>Сравнить товары <span class="count">0</span></span>#}
+    {#</div>#}
+
+    {#<a href="/personal/favorites.php" class="favorite">Закладки <span>(0)</span></a>#}
+    <div class="view">Вид:
+        <span rel="icon"></span>
+        <span rel="table" class="active"></span>
+    </div>
+    <div class="sort">Сортировать по:
+        <select ng-model="sortBy">
+            <option value="">по умолчанию</option>
+            <option value="price_asc">Цене ▲</option>
+            <option value="price_desc">Цене ▼</option>
+            <option value="title_asc">Названию ▲</option>
+            <option value="title_desc">Названию ▼</option>
+            <option value="novelty">Новизне</option>
+        </select>
+    </div>
+</div>

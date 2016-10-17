@@ -1,0 +1,5 @@
+<ul id="main_navigation" class="nav navbar-nav">
+{% for item in items %}
+    {% include 'PiZoneMenuBundle:Menu:_mainSubMenu.html.twig' with {'item': item, 'subMenu' : 0}%}
+{% endfor %}
+</ul>

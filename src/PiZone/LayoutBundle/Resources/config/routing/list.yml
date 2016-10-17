@@ -1,0 +1,11 @@
+layout:
+    path:     /{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:List:index", _format: json }
+    requirements:
+        _format:  json|xml
+
+layout_set_active:
+    path:     /{id}/set/{active}/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:List:active", _format: json }
+    requirements:
+        _format:  json|xml

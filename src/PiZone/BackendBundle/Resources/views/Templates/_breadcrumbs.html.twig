@@ -1,0 +1,17 @@
+{% verbatim %}
+    <div class="topbar-left" ng-controller="BreadcrumbsCtrl">
+        <ol class="breadcrumb">
+            <li class="crumb-icon">
+                <a href="#/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li ng-repeat="item in items" ng-class="{'crumb-link': !$last, 'crumb-trail': $last}">
+                <a href="{{ item.link }}" ng-if="!$last">
+                    {{ item.title }}
+                </a>
+                <span ng-if="$last">{{ item.title }}</span>
+            </li>
+        </ol>
+    </div>
+{% endverbatim %}

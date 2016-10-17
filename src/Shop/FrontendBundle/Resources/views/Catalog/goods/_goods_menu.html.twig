@@ -1,0 +1,33 @@
+<section class="catalog-tabs-menu" id="product_menu">
+    <div class="wrapper">
+        <ul class="tabs-nav">
+            <li>
+                <a href="#product_description" class="active">Описание</a>
+            </li>
+            {% if content.Technical_characteristics is defined %}
+            <li>
+                <a href="#product_specifications">Характеристики</a>
+            </li>
+            {% endif %}
+            {#<li>#}
+                {#<a href="#product_menu">Видео</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a href="#product_menu">Сертификаты</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a href="#product_menu">Документация</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a href="#product_menu">Отзывы</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a href="#product_menu">Обсуждение</a>#}
+            {#</li>#}
+            <li>
+                <a href="#product_menu" class="delivery ">Доставка и оплата</a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</section>

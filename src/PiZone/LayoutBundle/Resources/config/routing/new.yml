@@ -1,0 +1,12 @@
+layout_new:
+    path:     /new/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:New:new", _format: json }
+    requirements:
+        _format:  json|yml
+
+layout_create:
+    path:     /create/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:New:create", _format: json }
+    methods:  POST
+    requirements:
+        _format:  json|yml

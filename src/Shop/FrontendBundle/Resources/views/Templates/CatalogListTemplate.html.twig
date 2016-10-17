@@ -1,0 +1,16 @@
+{% extends 'ShopFrontendBundle:Templates:base.html.twig' %}
+
+{% block body %}
+    {% block breadcrumb %}{% endblock %}
+    <section id="catalog">
+        <div class="container mw1000">
+            <div class="col-md-12">
+                <div class="row-fluid" id="headlineSmall">
+                    <h1>{% block titlePage %}{% endblock %}</h1>
+                </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

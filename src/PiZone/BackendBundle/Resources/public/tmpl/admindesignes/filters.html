@@ -1,0 +1,21 @@
+<div class="popup-basic bg-none mfp-with-anim mfp-hide">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">
+                <i class="fa fa-rocket"></i>
+            </span>
+            <span class="panel-title" ng-bind-html="title"></span>
+        </div>
+
+        <form id="comment" class="form-horizontal admin-form">
+            <div class="panel-body p25">
+                <div class="form-group" ng-repeat="field in fields" ng-class="{'has-error': !field.valid}" ng-include="field.template"></div>
+            </div>
+
+            <div class="panel-footer text-right">
+                <button class="btn btn-primary" type="button" ng-click="Click.Submit()">Фильтровать</button>
+                <button class="btn btn-dark light" type="button" ng-click="Click.Cancel()">Сбросить</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="portfolio-modal modal fade in" id="{{orderCreatedModalId}}" tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-content">
+        <div class="close-modal" ng-click="closeOrderCreated()">
+            <div class="lr">
+                <div class="rl" ></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>Оформление заказа</h2>
+
+                        <div class="panel">
+                            <div class="panel-body pn">
+                                <p>Ваш заказ №{{orderId}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="btn-group text-right">
+                                    <button class="btn btn-default btn-mini" type="button" ng-click="backToHome()">
+                                        <i class="fa fa-remove"> Вернуться на главную</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-md-offset-8">
+                                <button class="btn btn-success btn-mini" type="button" ng-click="backToCatalog()">
+                                    <i class="fa fa-briefcase"> Продолжить покупки</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

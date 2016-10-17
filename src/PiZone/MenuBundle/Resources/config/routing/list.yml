@@ -1,0 +1,11 @@
+menu:
+    path:     /{_format}
+    defaults: { _controller: "PiZoneMenuBundle:Menu/List:index", _format: json }
+    requirements:
+        _format:  json|xml
+
+menu_set_active:
+    path:     /{id}/set/{active}/{_format}
+    defaults: { _controller: "PiZoneMenuBundle:Menu/List:active", _format: json }
+    requirements:
+        _format:  json|xml

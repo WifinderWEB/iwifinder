@@ -1,0 +1,16 @@
+{% if content.related is defined %}
+    <div class="row-fluid">
+        <h2>Связанные товары</h2>
+        <hr/>
+        <ul>
+            {% for one in content.related %}
+                <div class="productlistbox">
+                    {% set link = '/products/' ~ one.alias %}
+                    <h4><a href="{{ link|localeLink }}">{{ one.title }}</a></h4>
+
+                    <p><span class="small">{{ one.anons|raw }}</span></p>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

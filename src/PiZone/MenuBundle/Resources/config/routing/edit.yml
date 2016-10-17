@@ -1,0 +1,12 @@
+menu_edit:
+    path:     /{id}/edit/{_format}
+    defaults: { _controller: "PiZoneMenuBundle:Menu/Edit:edit", _format: json }
+    requirements:
+        _format:  json|yml
+
+menu_update:
+    path:     /{id}/update/{_format}
+    defaults: { _controller: "PiZoneMenuBundle:Menu/Edit:update", _format: json }
+    methods:  [POST, PUT]
+    requirements:
+        _format:  json|yml

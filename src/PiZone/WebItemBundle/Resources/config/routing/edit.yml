@@ -1,0 +1,12 @@
+web_item_edit:
+    path:     /{id}/edit/{_format}
+    defaults: { _controller: "PiZoneWebItemBundle:Edit:edit", _format: json }
+    requirements:
+        _format:  json|yml
+
+web_item_update:
+    path:     /{id}/update/{_format}
+    defaults: { _controller: "PiZoneWebItemBundle:Edit:update", _format: json }
+    methods:  [POST, PUT]
+    requirements:
+        _format:  json|yml

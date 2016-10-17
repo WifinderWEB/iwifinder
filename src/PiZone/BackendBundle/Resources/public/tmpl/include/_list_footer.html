@@ -1,0 +1,36 @@
+<div class="row" id="invoice-footer">
+    <div class="col-md-12">
+        <div class="pull-left mt20 fs15 text-primary">
+            <button class="btn btn-sm btn-primary btn-gradient" type="button" ng-click="Click.Add()">
+                <i class="fa fa-plus-square pr5"></i> Новый контент
+            </button>
+        </div>
+        <div class="pull-right" ng-if="pager.nb_pages > 1">
+            <nav>
+                <ul class="pagination pull-right">
+                    <li ng-class="{false: 'disabled'}[pager.has_previos_page]">
+                        <a ng-href="#{{route}}1" ng-click="Click.Page(1)"><i class="fa fa-angle-double-left"></i> </a>
+                    </li>
+                    <li class="prev" ng-class="{false: 'disabled'}[pager.has_previos_page]">
+                        <a href="#{{route}}{{pager.previos_page}}" ng-click="Click.Page(pager.previos_page)"><i class="fa fa-angle-left"></i> </a>
+                    </li>
+                    <li ng-if="pager.start > 1">
+                        <span>...</span>
+                    </li>
+                    <li ng-repeat="page in pager.range" ng-class="{true: 'active'}[pager.current_page == page]">
+                        <a href="#{{route}}{{page}}" ng-click="Click.Page(page)">{{page}}</a>
+                    </li>
+                    <li ng-if="pager.end < pager.nb_pages">
+                        <span>...</span>
+                    </li>
+                    <li class="next" ng-class="{false: 'disabled'}[pager.has_next_page]">
+                        <a href="#{{route}}{{pager.next_page}}" ng-click="Click.Page(pager.next_page)"> <i class="fa fa-angle-right"></i></a>
+                    </li>
+                    <li ng-class="{false: 'disabled'}[pager.has_next_page]">
+                        <a href="#{{route}}{{pager.nb_pages}}" ng-click="Click.Page(pager.nb_pages)"><i class="fa fa-angle-double-right"></i> </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

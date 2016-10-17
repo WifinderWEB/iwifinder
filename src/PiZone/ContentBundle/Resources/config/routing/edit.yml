@@ -1,0 +1,12 @@
+content_edit:
+    path:     /{id}/edit/{_format}
+    defaults: { _controller: "PiZoneContentBundle:Edit:edit", _format: json }
+    requirements:
+        _format:  json|xml
+
+content_update:
+    path:     /{id}/update/{_format}
+    defaults: { _controller: "PiZoneContentBundle:Edit:update", _format: json }
+    methods:  [POST, PUT]
+    requirements:
+        _format:  json|xml

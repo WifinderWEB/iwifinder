@@ -1,0 +1,44 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block title %}
+    <title>Карта сайта</title>
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="row-fluid">
+        <div class="span12">
+            <ul class="breadcrumb">
+                {% set link = "/" %}
+                <li><a href="{{ link|localeLink() }}">Главная</a> <span class="divider">/</span></li>
+                <li class="active">Карта сайта</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid catalog">
+    <ul class="tree">
+        {% set i = 0 %}
+        {% for one in content %}
+            {% if one.level <= i %}
+                {% for j in range(0, i-one.level) %}
+                    {% if not loop.last %}
+                        </ul>
+                    {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if one.level > i %}
+                <ul>
+            {% endif %}
+            <li>
+                <a href="{{ one.link }}">{{ one.title }}</a>
+
+                {% set i = one.level %}
+        {% endfor %}
+        </li>
+    </ul>
+</div>
+{% endblock %}

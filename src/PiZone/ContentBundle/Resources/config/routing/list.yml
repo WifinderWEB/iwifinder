@@ -1,0 +1,11 @@
+content:
+    path:     /{_format}
+    defaults: { _controller: "PiZoneContentBundle:List:index", _format: json }
+    requirements:
+        _format:  json|xml
+
+content_set_active:
+    path:     /{id}/set/{active}/{_format}
+    defaults: { _controller: "PiZoneContentBundle:List:active", _format: json }
+    requirements:
+        _format:  json|xml

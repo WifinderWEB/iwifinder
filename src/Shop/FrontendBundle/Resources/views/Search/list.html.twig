@@ -1,0 +1,54 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block meta_description %}
+    <meta name="description" content="Каталог товаров">
+    <meta http-equiv="description" content="Каталог товаров">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Каталог товаров">
+    <meta http-equiv="Keywords" content="Каталог товаров">
+{% endblock %}
+
+{% block breadcrumb %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope=""
+                    itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/" %}
+                    <a href="{{ link|localeLink() }}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <a href="/catalog/">
+                        <span>Каталог товаров</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Поиск</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="catalog" ng-controller="GoodsListCtrl">
+        <div class="wrapper">
+            <h1>Результаты поиска</h1>
+                {% verbatim %}
+            <span>({{ count }})</span>
+            {% endverbatim %}
+                <br class="clear">
+            <article>
+                {% include 'ShopFrontendBundle:Catalog:_article_categories.html.twig' %}
+            </article>
+            <aside>
+                {#{% include 'ShopFrontendBundle:Catalog:_aside_categories.html.twig' %}#}
+            </aside>
+            <div class="print_page"><a href="javascript:window.print()">Печать страницы</a></div>
+        </div>
+    </section>
+{% endblock %}

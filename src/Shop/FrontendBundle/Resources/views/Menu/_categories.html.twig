@@ -1,0 +1,47 @@
+<nav class="main ">
+    <a href="/catalog/">Каталог товаров</a>
+    <ul>
+        {% for one in items %}
+        <li>
+            <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+            {% if one.child is defined and one.child|length > 0 %}
+            <div class="submenu">
+                <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+                <ul>
+                    {% for one2 in one.child %}
+                    <li>
+                        <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                        {% if one2.child is defined and one2.child|length > 0 %}
+                        <div class="submenu2">
+                            <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                            <ul>
+                                {% for one3 in one2.child %}
+                                    <li>
+                                        <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <a href="/ip-kamery/ulichnaia/" class="corner videonablyudenie" target="_blank">
+                    <img class="lazy" src="/emptydot.gif" data-original="/images/menu_sections/videonablyudenie.png" alt="Видеонаблюдение" title="Видеонаблюдение">
+                </a>
+            </div>
+            {% endif %}
+        </li>
+        {% endfor %}
+
+        <li class="img">
+            <a href="/rubezh/">
+                <img src="/rubezh.png" alt="Рубеж" title="Рубеж">
+            </a>
+        </li>
+        <li class="brands">
+            <a href="/brands/">Каталог по брендам</a>
+        </li>
+    </ul>
+</nav>

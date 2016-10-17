@@ -1,0 +1,12 @@
+layout_edit:
+    path:     /{id}/edit/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:Edit:edit", _format: json }
+    requirements:
+        _format:  json|yml
+
+layout_update:
+    path:     /{id}/update/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:Edit:update", _format: json }
+    methods:  [POST, PUT]
+    requirements:
+        _format:  json|yml

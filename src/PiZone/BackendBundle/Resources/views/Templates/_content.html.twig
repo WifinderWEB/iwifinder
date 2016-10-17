@@ -1,0 +1,14 @@
+<!-- Start: Header -->
+{% include 'PiZoneBackendBundle:Templates:_navbar_top.html.twig' %}
+<!-- End: Header -->
+<!-- Start: Sidebar -->
+{% include 'PiZoneBackendBundle:Templates:_left_sidebar.html.twig' %}
+<!-- Start: Content-Wrapper -->
+<section id="content_wrapper">
+    {% include 'PiZoneBackendBundle:Templates:_top_bar_menu.html.twig' %}
+    {% include 'PiZoneBackendBundle:Templates:_top_bar.html.twig' %}
+    <section id="content" class="" ui-view="content"></section>
+</section>
+<!-- Start: Right Sidebar -->
+{% include 'PiZoneBackendBundle:Templates:_right_sidebar.html.twig' %}
+<!-- End: Right Sidebar -->

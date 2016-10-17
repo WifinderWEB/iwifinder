@@ -1,0 +1,75 @@
+{% extends 'ShopFrontendBundle:Templates:CatalogListTemplate.html.twig' %}
+
+{#{% block titlePage %}#}
+    {#<div class="row-fluid" id="headlineSmall">#}
+        {#<div class="span9">#}
+            {#<h1>{{ content.title }}</h1>#}
+        {#</div>#}
+    {#</div>#}
+{#{% endblock %}#}
+{#{% block titleMobile %}#}
+    {#<div class="row-fluid" id="headlineBig"> <!------- Заголовок для мобилной версии ------------->#}
+        {#<div class="span12">#}
+            {#<h1>{{ content.title }}</h1>#}
+        {#</div>#}
+    {#</div>#}
+{#{% endblock %}#}
+
+
+{#{% block title %}#}
+    {#{% if content.meta and content.meta.title is defined %}#}
+        {#<title>Shop by Honeywell :: {{ content.meta.title }}</title>#}
+    {#{% endif %}#}
+    {#{% if not content.meta %}#}
+        {#<title>Shop by Honeywell :: {{ content.title }}</title>#}
+    {#{% endif %}#}
+{#{% endblock %}#}
+
+{#{% block meta_description %}#}
+    {#{% if content.meta and content.meta.description is defined %}#}
+        {#<meta name="description" content="{{ content.meta.description }}">#}
+        {#<meta http-equiv="description" content="{{ content.meta.description }}">#}
+    {#{% endif %}#}
+{#{% endblock %}#}
+
+{#{% block meta_keywords %}#}
+    {#{% if content.meta and content.meta.keywords is defined %}#}
+        {#<meta name="Keywords" content="{{ content.meta.keywords }}">#}
+        {#<meta http-equiv="Keywords" content="{{ content.meta.keywords }}">#}
+    {#{% endif %}#}
+{#{% endblock %}#}
+
+{#{% block more_scripts %}#}
+    {#{% if content.meta and content.meta.scripts is defined %}#}
+        {#{{ content.meta.scripts }}#}
+    {#{% endif %}#}
+{#{% endblock %}#}
+
+
+{% block breadcrumb %}
+    {#{{ include ('ShopFrontendBundle:Catalog/show:_breadcrumbs.html.twig') }}#}
+{% endblock %}
+
+{% block content %}
+    {#<div class="row-fluid catalog">#}
+        {#<div class="row-fluid catalogInfo">#}
+            {#<div class="col-md-3">#}
+                {#{{ include ('ShopFrontendBundle:Catalog/show:_image.html.twig') }}#}
+            {#</div>#}
+            {#<div class="col-md-9">#}
+                {#{{ include ('ShopFrontendBundle:Catalog/show:_info.html.twig') }}#}
+            {#</div>#}
+
+            {#<div class="col-md-12">#}
+                {#{{ include ('ShopFrontendBundle:Catalog/show:_content.html.twig') }}#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row-fluid" style="padding: 15px 0"></div>#}
+
+        {#{{ include ('ShopFrontendBundle:Catalog/show:_gallery.html.twig') }}#}
+
+        {#{{ include ('ShopFrontendBundle:Catalog/show:_children.html.twig') }}#}
+
+        {#{{ include ('ShopFrontendBundle:Catalog/show:_relatedGoods.html.twig') }}#}
+    {#</div>#}
+{% endblock %}

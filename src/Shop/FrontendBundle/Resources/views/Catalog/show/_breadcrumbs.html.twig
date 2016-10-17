@@ -1,0 +1,13 @@
+{% if alias != 'Shop_by_honeywell' %}
+    <div class="row-fluid">
+        <div class="span12">
+            {#{% render(controller( "ShopFrontendBundle:Catalog:breadcrumbs", {"content" : content })) %}#}
+        </div>
+    </div>
+{% else %}
+    <ul class="breadcrumb">
+        {% set link = "/"%}
+        <li><a href="{{link|localeLink()}}">Главная</a> <span class="divider">/</span></li>
+        <li class="active">Каталог</li>
+    </ul>
+{% endif %}

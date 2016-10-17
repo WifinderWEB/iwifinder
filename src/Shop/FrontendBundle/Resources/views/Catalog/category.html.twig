@@ -1,0 +1,53 @@
+{% extends 'ShopFrontendBundle:Templates:NoWrapTemplate.html.twig' %}
+
+{% block title %}
+    <title>Каталог товаров</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Каталог товаров">
+    <meta http-equiv="description" content="Каталог товаров">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Каталог товаров">
+    <meta http-equiv="Keywords" content="Каталог товаров">
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <span>Каталог товаров</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="catalog" ng-controller="GoodsListCtrl">
+        <div class="wrapper">
+            {% if category.title is defined %}
+            <h1>{{ category.title }}</h1>
+            {% verbatim %}
+            <span>({{ count }})</span>
+            {% endverbatim %}
+            <br class="clear">
+            {% endif %}
+            <article>
+                {% include 'ShopFrontendBundle:Catalog:_article_categories.html.twig' %}
+            </article>
+            <aside>
+                {% include 'ShopFrontendBundle:Catalog:_aside_categories.html.twig' %}
+            </aside>
+            <div class="print_page"><a href="javascript:window.print()">Печать страницы</a></div>
+        </div>
+    </section>
+{% endblock %}

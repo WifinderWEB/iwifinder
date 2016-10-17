@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+        {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/theme.min.css'
+        'bundles/pizonebackend/css/magnific-popup.css'
+        'bundles/pizonebackend/css/theme.css'
+        'bundles/pizonebackend/css/admin-forms.css'
+        %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body ng-app="backend">
+    <div id="main" class="animated fadeIn" ui-view></div>
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/pizonebackend/js/lib/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/pizonebackend/js/admindesigns/utility.js') }}"></script>
+        {% javascripts filter='?yui_js' output='assetic/js/compiled/admindesign.min.js'
+            'bundles/pizonebackend/js/lib/jquery-ui.min.js'
+            'bundles/pizonebackend/js/lib/bower_components/summernote/dist/summernote.js'
+            'bundles/pizonebackend/js/lib/jquery.magnific-popup.js'
+            'bundles/pizonebackend/js/lib/jquery.cookie.js'
+            'bundles/pizonebackend/js/admindesigns/pnotify.js'
+            'bundles/pizonebackend/js/admindesigns/main.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% javascripts filter='?yui_js' output='assetic/js/compiled/angular.min.js'
+            'bundles/pizonebackend/js/lib/bower_components/angular/angular.js'
+            'bundles/pizonebackend/js/lib/bower_components/angular-cookies/angular-cookies.js'
+            'bundles/pizonebackend/js/lib/bower_components/angular-summernote/dist/angular-summernote.js'
+            'bundles/pizonebackend/js/lib/bower_components/ngstorage/ngStorage.js'
+            'bundles/pizonebackend/js/lib/bower_components/angular-sanitize/angular-sanitize.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script type="text/javascript" src="{{ asset('bundles/pizonebackend/js/lib/bower_components/angular-ui-router/release/angular-ui-router.js') }}"></script>
+
+        {% javascripts filter='?yui_js' output='assetic/js/compiled/backend.min.js'
+            'bundles/pizonebackend/js/app.config.js'
+            'bundles/pizonebackend/js/service/data.processing.js'
+            'bundles/pizonebackend/js/service/event.dispatcher.js'
+            'bundles/pizonebackend/js/service/field.dispatcher.js'
+            'bundles/pizonebackend/js/service/notify.js'
+            'bundles/pizonebackend/js/service/loader.js'
+            'bundles/pizonebackend/js/service/exception.js'
+            'bundles/pizonebackend/js/service/base64.js'
+            'bundles/pizonebackend/js/factory/auth.interceptor.js'
+            'bundles/pizonebackend/js/directive/tab.js'
+            'bundles/pizonebackend/js/directive/button.active.js'
+            'bundles/pizonebackend/js/directive/list.button.group.js'
+            'bundles/pizonebackend/js/directive/per.page.js'
+            'bundles/pizonebackend/js/directive/field.sort.js'
+            'bundles/pizonebackend/js/controller/admindesignes/list.js'
+            'bundles/pizonebackend/js/controller/admindesignes/new.js'
+            'bundles/pizonebackend/js/controller/admindesignes/edit.js'
+            'bundles/pizonebackend/js/controller/admindesignes/main.js'
+            'bundles/pizonebackend/js/controller/admindesignes/breadcrumbs.js'
+            'bundles/pizonebackend/js/controller/admindesignes/user.info.js'
+            'bundles/pizonebackend/js/controller/admindesignes/modal.js'
+            'bundles/pizonebackend/js/controller/admindesignes/filters.js'
+            'bundles/pizonebackend/js/controller/security/login.js'
+            'bundles/pizonebackend/js/controller/content/list.js'
+            'bundles/pizonebackend/js/controller/content/new.js'
+            'bundles/pizonebackend/js/controller/content/edit.js'
+            'bundles/pizonebackend/js/controller/layout/list.js'
+            'bundles/pizonebackend/js/controller/layout/new.js'
+            'bundles/pizonebackend/js/controller/layout/edit.js'
+            'bundles/pizonebackend/js/controller/webitem/list.js'
+            'bundles/pizonebackend/js/controller/webitem/new.js'
+            'bundles/pizonebackend/js/controller/webitem/edit.js'
+            'bundles/pizonebackend/js/controller/menu/list.js'
+            'bundles/pizonebackend/js/controller/menu/new.js'
+            'bundles/pizonebackend/js/controller/menu/edit.js'
+            'bundles/pizonebackend/js/model/admindesignes/model.js'
+            'bundles/pizonebackend/js/model/content/content.js'
+            'bundles/pizonebackend/js/model/layout/layout.js'
+            'bundles/pizonebackend/js/model/webitem/webitem.js'
+            'bundles/pizonebackend/js/model/menu/menu.js'
+            'bundles/pizonebackend/js/module/pizone.auth.js'
+            'bundles/pizonebackend/js/module/pizone.modal.service.js'
+            'bundles/pizonebackend/js/app.controller.js'
+            'bundles/pizonebackend/js/app.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+</body>
+</html>

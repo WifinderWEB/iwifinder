@@ -1,0 +1,68 @@
+{% set layout = 'FullWidthTemplate' %}
+{% if content.layout %}
+    {% set layout = content.layout.file %}
+{% endif %}
+{% extends 'ShopFrontendBundle:Templates:' ~ layout ~ '.html.twig' %}
+
+
+
+{% block title %}
+    {% if content.meta %}
+        <title>{{ content.meta.metaTitle }}</title>
+    {% endif %}
+    {% if not content.meta %}
+        <title>{{ content.title }}</title>
+    {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+    {% if content.meta %}
+        {{ content.meta.metaDescription }}
+    {% endif %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% if content.meta %}
+        {{ content.meta.metaKeywords }}
+    {% endif %}
+{% endblock %}
+
+{% block more_scripts %}
+    {% if content.meta %}
+        {{ content.meta.moreScripts }}
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% render(controller( "ShopFrontendBundle:Menu:breadCrumb", {"alias" : content.alias })) %}
+{% endblock %}
+
+
+{% block content %}
+    <div id="supportTab" class="row-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#designers">Проектировщику<b class="tab-caret"></b></a>
+            </li>
+            <li>
+                <a href="#installers">Инсталятору<b class="tab-caret"></b></a>
+            </li>
+            <li>
+                <a href="#services">Службе эксплуатации<b class="tab-caret"></b></a>
+            </li>
+        </ul>
+        <div class="row-fluid" id="supportContent">
+            <div class="tab-content span8">
+                {{content.content|raw}}
+            </div>
+            <div class="span4" id="registrationBlock">
+                {% render(controller("ShopFrontendBundle:User:registrationUser")) %}
+            </div>
+        </div>
+        <script>
+            $(function () {
+                Frontend.InitTabs();
+            })
+        </script>
+    </div>
+{% endblock %}

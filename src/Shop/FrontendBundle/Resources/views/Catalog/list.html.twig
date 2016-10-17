@@ -1,0 +1,29 @@
+{% extends 'ShopFrontendBundle:Templates:CatalogListTemplate.html.twig' %}
+
+{% block breadcrumb %}
+<div class="row-fluid">
+    <div class="span12">
+        <ul class="breadcrumb">
+            {% set link = "/"%}
+            <li><a href="{{link|localeLink()}}">Главная</a> <span class="divider">/</span></li>
+            <li class="active">Каталог</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid catalog">
+        {% for one in content %}
+        <div style="padding-left: {{one.level * 50}}px">
+
+                {% set link = '/products/' ~ one.alias%}
+                <p><a href="{{link|localeLink}}">{{one.title}}</a></p>
+                {% if one.anons is defined %}
+                    <small>{{one.anons|raw}}</small>
+                {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>    
+{% endblock %}

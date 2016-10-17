@@ -1,0 +1,7 @@
+{% if query is not defined %}
+    {% set query = '' %}
+{% endif %}
+<form class="navbar-form pull-left" id="search" method="GET" action="{{ path('Shop_frontend_catalog_search') }}">
+    <input name="query" type="text" class="span4" placeholder="Найти оборудование" value="{{ query }}">
+    <button class="btn" type="submit"/>Найти</button>
+</form>

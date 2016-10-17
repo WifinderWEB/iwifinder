@@ -1,0 +1,11 @@
+pizone_user_login:
+    path:     /api/login
+    defaults: { _controller: PiZoneUserBundle:Security:login }
+
+#pizone_user_login_check:
+#    path:     /api/login_check
+#    defaults: { _controller: PiZoneUserBundle:Security:check }
+
+pizone_user_logout:
+    path:     /api/logout
+    defaults: { _controller: PiZoneUserBundle:Security:logout }

@@ -1,0 +1,8 @@
+<form action="{{ path('shop_frontend_catalog_search') }}" method="get">
+    <input type="text" name="q" placeholder="Поиск по более чем 50000 наименованиям" autocomplete="off" value="{{ app.request.get('query') }}">
+    <input type="submit" value=" ">
+    <div id="search_results">
+        <div class="wrap"></div>
+        <div class="close"></div>
+    </div>
+</form>

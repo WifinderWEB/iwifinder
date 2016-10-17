@@ -1,0 +1,14 @@
+layout_show:
+    path:     /{id}/show/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:Layout:show", _format: json }
+    requirements:
+        _format:  json|yml
+
+
+
+layout_delete:
+    path:     /{id}/delete/{_format}
+    defaults: { _controller: "PiZoneLayoutBundle:Layout:delete", _format: json }
+    methods:  [POST, DELETE]
+    requirements:
+        _format:  json|yml

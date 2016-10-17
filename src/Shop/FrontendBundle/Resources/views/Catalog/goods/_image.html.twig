@@ -1,0 +1,21 @@
+<div class="images">
+    <a href="#product_menu" title="Видео" class="videolink"></a>
+    <a href="#product_menu" title="Документация" class="docslink"></a>
+
+    <div class="bigimg" itemtype="https://schema.org/ImageObject" itemscope="" itemprop="image">
+        <a href="//{{ content.big_image_path }}" class="fancybox" rel="product-images">
+            <img src="//{{ content.image_path }}"
+                 {% if content.alt_image is defined %}
+                 alt="{{ content.alt_image }}"
+                 {% endif %}
+                 {% if content.title_image is defined %}
+                 title="{{ content.title_image }}"
+                 {% endif %}
+            >
+        </a>
+    </div>
+
+    {#<a href="https://www.layta.ru/brands/rvi" class="brand">#}
+        {#<img src="./Goods_files/RVi-logo1_100.jpg" alt="RVi" title="RVi">#}
+    {#</a>#}
+</div>

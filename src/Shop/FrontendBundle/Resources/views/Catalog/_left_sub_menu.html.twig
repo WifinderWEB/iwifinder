@@ -1,0 +1,9 @@
+{% for item in items%}
+    <li style="padding-left: {{item['level']*20}}px">
+        {% set link = '/products/' ~ item['alias']%}
+        <a href="{{link|localeLink}}" {% if alias == item['alias']%}class="active"{% endif %}>{{item['title']}}</a>
+        {% if item['child'] is defined and item['child']|length > 0 %}
+            {% include 'ShopFrontendBundle:Catalog:_left_sub_menu.html.twig' with {'items': item['child']}%}
+        {% endif %}
+    </li>
+{% endfor %}

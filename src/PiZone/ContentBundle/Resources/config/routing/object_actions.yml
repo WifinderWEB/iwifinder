@@ -1,0 +1,6 @@
+content_delete:
+    path:     /{id}/delete/{_format}
+    defaults: { _controller: "PiZoneContentBundle:Action:delete", _format: json }
+    requirements:
+        id:       \d+
+        _format:  json|xml

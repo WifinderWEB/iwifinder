@@ -1,0 +1,88 @@
+{#<div class="navbar" id="topNavigation">#}
+    {#<div class="navbar-inner">#}
+        {#<ul class="nav">#}
+                {#<li>#}
+                    {#<a href="/" alt="Главная" title="Главная" ><i class="icon-home"></i></a>#}
+                {#</li>#}
+            {#{% for item in items %}#}
+                {#{% set class = '' %}#}
+                {#{% if app.request.requesturi == item.link %}#}
+                    {#{% set class = ' active' %}#}
+                {#{% endif %}#}
+
+                {#<li class="item{{class}}">#}
+                    {#<a href="{{ item.link|localeLink }}" alt="{{ item.title }}" title="{{ item.title }}">{{ item.title }}</a>#}
+                {#</li>#}
+                {#{% if not loop.last %}#}
+                    {#<li class="separator">|</li>#}
+                {#{% endif %}#}
+            {#{% endfor %}#}
+        {#</ul>#}
+    {#</div>#}
+{#</div>#}
+
+
+<nav class="navbar navbar-default">
+
+
+    <!-- Topbar Nav (hidden) -->
+    <div class="topbar-nav clearfix">
+        <div class="container">
+            <ul class="topbar-left list-unstyled list-inline">
+                <li> <span class="fa fa-phone"></span> 123-456-7890 </li>
+                <li> <span class="fa fa-envelope"></span> info@yourdomain.com </li>
+            </ul>
+            <ul class="topbar-right list-unstyled list-inline topbar-social">
+                <li> <a href="#"> <span class="fa fa-facebook"></span> </a></li>
+                <li> <a href="#"> <span class="fa fa-twitter"></span> </a></li>
+                <li> <a href="#"> <span class="fa fa-google-plus"></span> </a></li>
+                <li> <a href="#"> <span class="fa fa-dribbble"></span> </a></li>
+                <li> <a href="#"> <span class="fa fa-instagram"></span> </a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 1050px;">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="{{ path('shop_frontend_homepage') }}#page-top">Esser</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden active">
+                    <a href="{{ path('shop_frontend_homepage') }}">Главная</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="{{ path('shop_frontend_catalog_list1') }}">Продукты</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#services">Сервис</a>
+                </li>
+                <li class="">
+                    <a class="page-scroll" href="#features-flat">Особенности</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Портфолио</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#footer">Контакты</a>
+                </li>
+                <li class="dropdown menu-merge">
+                    {% include('ShopFrontendBundle:Templates:_cart.html.twig') %}
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>

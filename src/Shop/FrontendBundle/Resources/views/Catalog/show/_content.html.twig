@@ -1,0 +1,43 @@
+{% if content.content is defined %}
+    <div class="row-fluid" style="margin-top: 10px;">
+        <div class="span11 offset1">
+            {{ content.content|raw }}
+        </div>
+    </div>
+{% endif %}
+
+{% if content.Technical_characteristics is defined %}
+    <div class="row-fluid">
+        <div class="span11 offset1 Technical_characteristics">
+            <h3>Технические характеристики:</h3>
+            {{ content.Technical_characteristics|raw }}
+        </div>
+    </div>
+{% endif %}
+
+{% if content.features is defined %}
+    <div class="row-fluid">
+        <div class="span11 offset1">
+            <h3>Особенности:</h3>
+            {{ content.features|raw }}
+        </div>
+    </div>
+{% endif %}
+
+{% if content.additional_information is defined %}
+    <div class="row-fluid">
+        <div class="span11 offset1">
+            <h3>Дополнительная информация:</h3>
+            {{ content.additional_information|raw }}
+        </div>
+    </div>
+{% endif %}
+
+{% if content.scope_of_delivery is defined %}
+    <div class="row-fluid">
+        <div class="span11 offset1">
+            <h3>Комплект поставки:</h3>
+            {{ content.scope_of_delivery|raw }}
+        </div>
+    </div>
+{% endif %}

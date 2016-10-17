@@ -1,0 +1,17 @@
+{% extends 'ShopFrontendBundle:Templates:base.html.twig' %}
+
+{% block body %}
+    <section class="company">
+        <div class="wrapper">
+            <h1>{% block titlePage %}{% endblock %}</h1>
+            <article>
+            {% block content %}{% endblock %}
+                <p class="copyright">
+                    <a href="/catalog" class="catalog">Перейти к покупкам</a><br>
+                    {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'content_copyright'})) %}
+                </p>
+            </article>
+            <br class="clear">
+        </div>
+        </section>
+{% endblock %}

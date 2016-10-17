@@ -1,0 +1,52 @@
+<section class="user-panel">
+    <div class="wrapper">
+        <a href="/company/contactus" class="contacts">Обратная связь</a>
+        <ul>
+            {#<li><a href="/catalog/compare.php" data-event="goToCompare">Сравнение </a></li>#}
+            {#<li><a href="/personal/favorites" data-event="goToFavorites">Закладки </a></li>#}
+            {% verbatim %}
+            <li ng-controller="CartInfoBottomCtrl">
+                <a href="/cart" data-event="goToCart">Корзина <span class="ng-hide" ng-show="count > 0">{{count}}</span></a>
+            </li>
+            {% endverbatim %}
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <div class="wrapper">
+        <div class="subscribe">
+            Подписаться на новости компании и рынка
+
+            <form action="/personal/subscribe/" method="post">
+                <input type="hidden" name="sf_RUB_ID[]" value="1">
+                <input type="email" placeholder="Ваш адрес электронной почты" name="sf_EMAIL">
+                <input type="submit" value="Подписаться">
+            </form>
+        </div>
+
+        {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'footer'})) %}
+    </div>
+
+
+    <div class="hidden-counters">
+        <style>
+            .copyright_cleversite, .clever_callback_copyr {
+                display: none;
+            }
+        </style>
+    </div>
+</footer>
+
+{#<a href="/sale/" class="sale_bnr">#}
+    {#<img src="/sale.png" alt="Распродажа">#}
+{#</a>#}
+
+<section class="scroll-top">
+    <div class="wrapper">
+        <ul>
+            <li><span class="readmore"><span></span><span></span></span></li>
+            <li><span class="scrolltotop"><span>Наверх</span></span></li>
+        </ul>
+    </div>
+</section>

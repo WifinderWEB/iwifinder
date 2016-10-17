@@ -1,0 +1,34 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    pizone_form:
+        class: PiZone\ContentBundle\Services\PiZoneForm
+
+    pizone_view:
+        class: PiZone\ContentBundle\Services\PiZoneView
+        arguments:
+            - @service_container
+
+    shop.twig.locale_extension:
+        class: Shop\FrontendBundle\Twig\LocaleExtension
+        arguments:
+            - @service_container
+        tags:
+            - { name: twig.extension }
+    catalog_api:
+        class: Shop\CatalogBundle\Service\CatalogApi
+        arguments:
+            - @service_container
+
+    form_api:
+        class: Shop\CatalogBundle\Service\FormApi
+        arguments:
+            - @service_container

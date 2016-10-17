@@ -1,0 +1,46 @@
+{% extends 'PiZoneLandingBundle:Templates:base.html.twig' %}
+
+{% block titlePage %}Карта сайта{% endblock %}
+{% block titleMobile %}Карта сайта{% endblock %}
+
+{% block title %}
+    <title>Карта сайта</title>
+{% endblock %}
+
+
+{% block topMenu %}
+    {% render(controller( "PiZoneMenuBundle:Menu:topMenu", {"menu" : "top_menu", "alias" : "top_menu"}))%}
+{% endblock %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <style>
+        #siteMap li >ul{
+            padding-left: 30px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('scripts/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/PiZonelanding/js/frontend.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block body %}
+    <section class="contacts">
+        <div class="container">
+            <div class="columns">
+                <div class="first column">
+                </div>
+                <div class="second triple column">
+                    <div class="content">
+                        <h1>Карта сайта</h1>
+                        <div id="siteMap">
+                        {{ items|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

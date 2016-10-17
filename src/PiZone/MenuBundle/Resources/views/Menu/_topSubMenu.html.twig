@@ -1,0 +1,22 @@
+{% for item in items %}
+    {% set class = "" %}
+    {% if item.id in path%}
+        {% set class = " active"%}
+    {% endif%}
+    {% if item.children %}
+        <li class="submenu__item with-submenu{{class}}">
+            <a href="{{ item.link|localeLink }}" {% if class != '' %}class="{{class}}"{% endif %}>
+                <span>{{ item.title }}</span>
+            </a>
+            <ul class="submenu{{class}}">
+                {% include 'PiZoneMenuBundle:Menu:_topSubMenu.html.twig' with {'items': item.children, 'subMenu' : 1}%}
+            </ul>
+        </li>
+    {% else %}
+        <li class="submenu__item{{class}}">
+            <a href="{{ item.link|localeLink }}" {% if class != '' %}class="{{class}}"{% endif %}>
+                <span>{{ item.title }}</span>
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,23 @@
+<header>
+    <div class="top-menu">
+        <div class="wrapper">
+            {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'top_menu'})) %}
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="wrapper">
+
+            {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'contacts'})) %}
+
+            {% include 'ShopFrontendBundle:Templates:_cart.html.twig' %}
+        </div>
+    </div>
+
+    <div class="wrapper">
+        {% render(controller( "ShopFrontendBundle:Menu:Categories")) %}
+        <div class="dop-menu">
+            {% include 'ShopFrontendBundle:Templates:_search.html.twig' %}
+        </div>
+    </div>
+</header>
