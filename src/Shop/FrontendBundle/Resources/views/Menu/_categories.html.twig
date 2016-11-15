@@ -3,10 +3,14 @@
     <ul>
         {% for one in items %}
         <li>
-            <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+            {% if one.alias is defined %}
+                <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+            {% endif %}
             {% if one.child is defined and one.child|length > 0 %}
             <div class="submenu">
+                {% if one.alias is defined %}
                 <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+                {% endif %}
                 <ul>
                     {% for one2 in one.child %}
                     <li>
