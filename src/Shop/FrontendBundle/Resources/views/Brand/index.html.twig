@@ -1,0 +1,42 @@
+{% extends 'ShopFrontendBundle:Templates:NoWrapTemplate.html.twig' %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}" itemprop="url" property="item" typeof="WebPage">
+                        <span itemprop="title" property="name">Главная</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li>
+                    <span>Каталог по брендам</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+
+    <section class="brands-filter">
+        <div class="wrapper">
+            <h1 class="section-title">Каталог по брендам</h1>
+            <ul class="popular-brand">
+                {% for one in items %}
+                <li style="background: {{ one.background }}">
+                    {% set link = "/brands/" ~ one.alias %}
+                    <a href="{{link|localeLink()}}">
+                    <span class="img">
+                        <img class="lazy" src="//{{ one.image_path }}"  alt="{{ one.title }}"  style="display: inline;">
+                    </span> {{ one.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

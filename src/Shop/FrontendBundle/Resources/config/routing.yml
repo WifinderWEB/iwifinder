@@ -42,6 +42,14 @@ shop_frontend_order:
     pattern:  /order/{catalog_alias}
     defaults: { _controller: ShopFrontendBundle:Catalog:order, alias: order }
 
+shop_frontend_brand_list:
+    pattern:  /brands
+    defaults: { _controller: ShopFrontendBundle:Brand:index}
+
+shop_frontend_brand_catalog:
+    pattern:  /brands/{alias}
+    defaults: { _controller: ShopFrontendBundle:Brand:brand}
+
 shop_frontend_catalog_list:
     pattern:  /catalog
     defaults: { _controller: ShopFrontendBundle:Catalog:show, alias: esser_by_honeywell }
@@ -68,7 +76,6 @@ shop_frontend_catalog_show:
 shop_frontend_catalog_show_2:
     pattern:  /catalog/{alias}/
     defaults: { _controller: ShopFrontendBundle:Catalog:show }
-
 
 shop_frontend_catalog_show_goods:
     pattern:  /catalog/{category}/{alias}

@@ -5,6 +5,11 @@ namespace Shop\CatalogBundle\Service;
 use Symfony\Component\HttpFoundation\Request;
 
 class CatalogApi extends Api {
+    public function getProjectList(){
+        $t = $this->getContent($this->getUrl() . 'api/getProjectList');
+        return json_decode($t, true);
+    }
+
     public function getList(){
         $t = $this->getContent($this->getUrl() . 'api/'.$this->getProjectId().'/getList');
         return json_decode($t, true);
@@ -19,6 +24,12 @@ class CatalogApi extends Api {
             $params['alias'] = $alias;
         if($params)
             $query = $query . '?' .http_build_query($params);
+        $t = $this->getContent($query);
+        return json_decode($t, true);
+    }
+
+    public function getTreeByAlias($alias){
+        $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true';
         $t = $this->getContent($query);
         return json_decode($t, true);
     }

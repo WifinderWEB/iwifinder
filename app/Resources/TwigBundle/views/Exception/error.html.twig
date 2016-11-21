@@ -1,0 +1,14 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid" id="content">
+            <div class="row-fluid">
+                <div id="error_content">
+                    <h1>Oops! An Error Occurred</h1>
+                    <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

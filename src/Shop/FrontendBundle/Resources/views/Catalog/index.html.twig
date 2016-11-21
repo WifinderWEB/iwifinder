@@ -38,32 +38,34 @@
             <h1>Каталог товаров</h1>
             <ul>
                 {% for one in items %}
-                <li>
-                    {% set link = "/catalog/" ~ one.alias %}
-                    <a href="{{link|localeLink()}}"><h3>{{ one.title }}</h3></a>
-                    <span class="img">
-                        <img src="" alt="" title="">
-                    </span>
-                    {% if one.child is defined and one.child|length > 0 %}
-                    <ul>
-                       {% for one2 in one.child %}
+                    {% if one.alias is defined %}
                         <li>
-                            <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
-                           {% if one2.child is defined and one2.child|length > 0 %}
-                            <span class="readmore"></span>
-                            <ul class="moreinfo">
-                               {% for one3 in one2.child %}
+                            {% set link = "/catalog/" ~ one.alias %}
+                            <a href="{{link|localeLink()}}"><h3>{{ one.title }}</h3></a>
+                            <span class="img">
+                                <img src="" alt="" title="">
+                            </span>
+                            {% if one.child is defined and one.child|length > 0 %}
+                            <ul>
+                               {% for one2 in one.child %}
                                 <li>
-                                    <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                    <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                                   {% if one2.child is defined and one2.child|length > 0 %}
+                                    <span class="readmore"></span>
+                                    <ul class="moreinfo">
+                                       {% for one3 in one2.child %}
+                                        <li>
+                                            <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                        </li>
+                                       {% endfor %}
+                                    </ul>
+                                   {% endif %}
                                 </li>
                                {% endfor %}
                             </ul>
-                           {% endif %}
+                            {% endif %}
                         </li>
-                       {% endfor %}
-                    </ul>
                     {% endif %}
-                </li>
                 {% endfor %}
             </ul>
         </div>

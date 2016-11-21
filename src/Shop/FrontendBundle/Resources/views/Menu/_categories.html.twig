@@ -3,14 +3,10 @@
     <ul>
         {% for one in items %}
         <li>
-            {% if one.alias is defined %}
-                <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
-            {% endif %}
+            <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
             {% if one.child is defined and one.child|length > 0 %}
             <div class="submenu">
-                {% if one.alias is defined %}
                 <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
-                {% endif %}
                 <ul>
                     {% for one2 in one.child %}
                     <li>
@@ -38,14 +34,8 @@
             {% endif %}
         </li>
         {% endfor %}
-
-        <li class="img">
-            <a href="/rubezh/">
-                <img src="/rubezh.png" alt="Рубеж" title="Рубеж">
-            </a>
-        </li>
         <li class="brands">
-            <a href="/brands/">Каталог по брендам</a>
+            <a href="/brands">Каталог по брендам</a>
         </li>
     </ul>
 </nav>

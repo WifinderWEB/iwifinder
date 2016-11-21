@@ -1,0 +1,75 @@
+{% extends 'ShopFrontendBundle:Templates:NoWrapTemplate.html.twig' %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}">
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li>
+                    {% set link = "/brands" %}
+                    <a href="{{link|localeLink()}}">
+                        <span>Каталог по брендам</span>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ project.title }}</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <section class="brands-filter">
+        <div class="wrapper">
+            <h1 class="section-title">Каталог товаров "{{ project.title }}"</h1>
+            <article>
+                {{ project.description|raw }}
+            </article>
+        </div>
+    </section>
+    <section class="catalog-tree">
+        <div class="wrapper">
+            <ul>
+                {% for one in items %}
+                    {% if one.alias is defined %}
+                        <li>
+                            {% set link = "/catalog/" ~ one.alias %}
+                            <a href="{{link|localeLink()}}"><h3>{{ one.title }}</h3></a>
+                            <span class="img">
+                                {% if one.image_path is defined %}
+                                    <img src="//{{ one.image_path }}" alt="{{ one.alt_image }}" title="{{ one.title_image }}">
+                                {% endif %}
+                            </span>
+                            {% if one.child is defined and one.child|length > 0 %}
+                                <ul>
+                                    {% for one2 in one.child %}
+                                        <li>
+                                            <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                                            {% if one2.child is defined and one2.child|length > 0 %}
+                                                <span class="readmore"></span>
+                                                <ul class="moreinfo">
+                                                    {% for one3 in one2.child %}
+                                                        <li>
+                                                            <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
