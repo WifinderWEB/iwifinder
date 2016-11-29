@@ -806,12 +806,12 @@ header .logo, header .city, header .phone, header .cart, header .phone, header .
 }
 header .logo {
     display: inline-block;
-    width: 182px;
-    height: 71px;
-    margin: -5px 0 0 5px;
+    width: 250px;
+    height: 80px;
+    margin: -5px 0 0 0px;
 }
 header .city {
-    padding-left: 112px;
+    padding-left: 50px;
     width: 230px;
 }
 header .city .user_city {

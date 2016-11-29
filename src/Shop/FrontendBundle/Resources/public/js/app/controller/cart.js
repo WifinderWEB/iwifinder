@@ -117,9 +117,10 @@ function CartCtrl($scope, $state){
     }
 
     function order(){
-        EventDispatcher.DispatchEvent('change-cart');
-        $('#' + $scope.cartModalId).hide();
-        $state.go('order', {cart: $scope.goods});
+        console.log('ggg');
+        // EventDispatcher.DispatchEvent('change-cart');
+        // $('#' + $scope.cartModalId).hide();
+        // $state.go('order', {cart: $scope.goods});
     }
 
     function executeQuery(query, callback){

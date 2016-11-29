@@ -46,7 +46,7 @@
         <h1>Корзина</h1>
         {% verbatim %}
         <div class="cart" ng-controller="CartCtrl">
-            <form action="/personal/cart/" method="post">
+            <form action="" method="post" ng-submit="order()">
                 <table>
                     <thead>
                     <tr>

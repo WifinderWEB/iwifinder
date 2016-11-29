@@ -46,7 +46,6 @@ function CartInfoCtrl($scope, $timeout){
 
     function Init(){
         EventDispatcher.AddEventListener('update-cart', function(data){
-            console.log(data);
             if(data)
                 updateData(data);
             // else
@@ -123,8 +122,8 @@ function CartInfoCtrl($scope, $timeout){
     }
 
     function order(){
-        $('#' + $scope.cartModalId).hide();
-        window.location.hash = '/order/';
+        // $('#' + $scope.cartModalId).hide();
+        // window.location.hash = '/order/';
     }
 
     function executeQuery(query, callback){
