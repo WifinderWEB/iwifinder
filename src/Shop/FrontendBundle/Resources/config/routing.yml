@@ -50,6 +50,10 @@ shop_frontend_brand_catalog:
     pattern:  /brands/{alias}
     defaults: { _controller: ShopFrontendBundle:Brand:brand}
 
+shop_frontend_brand_catalog_category:
+    pattern:  /brands/{brand}/{alias}
+    defaults: { _controller: ShopFrontendBundle:Brand:show}
+
 shop_frontend_catalog_list:
     pattern:  /catalog
     defaults: { _controller: ShopFrontendBundle:Catalog:show, alias: esser_by_honeywell }

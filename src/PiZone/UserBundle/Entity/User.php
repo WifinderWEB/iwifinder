@@ -25,7 +25,7 @@ class User extends BaseUser
      *
      * @ORM\Column(type="string", length=225, nullable=true)
      * @Assert\Regex( 
-     *       pattern="/^(([a-zA-Zа-яА-ЯёЁ]+)\s)+([a-zA-Zа-яА-ЯёЁ]+)$/",
+     *       pattern="/^(([a-zA-Zа-яА-ЯёЁ]+)\s)+?([a-zA-Zа-яА-ЯёЁ]+)$/",
      *       message="Field can contain only letters."
      * )
      */
@@ -40,7 +40,14 @@ class User extends BaseUser
      * @var boolean
      */
     protected $enabled = true;
-    
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+
     /**
      * Get id
      *

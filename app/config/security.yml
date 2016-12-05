@@ -14,18 +14,46 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        public:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path:  /user/login
+                check_path:  /user/check
+                default_target_path: /redirect_auth
+            logout:
+                path: /user/logout
+            logout:       true
+            anonymous:    true
         main:
-            pattern: ^/api
-            anonymous: ~
-            form_login: false
-            provider: fos_userbundle
+            pattern: ^/
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:
+                path: /logout
+            anonymous:    true
             http_basic:
                 realm: "REST Service Realm"
+#        main:
+#            pattern: ^/api
+#            anonymous: ~
+#            form_login:
+#                provider: fos_userbundle
+#                csrf_provider: form.csrf_provider
+#            provider: fos_userbundle
+#            http_basic:
+#                realm: "REST Service Realm"
 
     access_control:
        - { path: ^/api/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/api/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/api/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+       - { path: ^/user/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+       - { path: ^/user/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/api/frontend, role: IS_AUTHENTICATED_ANONYMOUSLY }

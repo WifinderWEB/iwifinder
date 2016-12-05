@@ -1,0 +1,60 @@
+{% extends 'ShopFrontendBundle:Templates:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css'
+    %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    {% block breadcrumb %}{% endblock %}
+    <section class="authorise">
+        <div class="wrapper">
+            <form action="{{ path("shop_security_check") }}" name="bform" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                {% endif %}
+                <div class="title">Вход для покупателей</div>
+                <label>
+                    Адрес электронной почты:<br>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
+                </label>
+                <div class="error-email"></div>
+                <label>
+                    Пароль:<br>
+                    <input type="password" id="password" name="_password" required="required"/>
+                </label>
+                <div class="error-output">
+                    {% if error %}
+                        Ошибка в логине или пароле.
+                    {% endif %}
+                </div>
+                <input type="submit" id="_submit" name="_submit" value="Войти">
+
+                <a href="{{ path("fos_user_resetting_request") }}" rel="nofollow">Забыли свой пароль?</a>
+
+                <div class="form-description">Символом "звездочка" (*) отмечены обязательные для заполнения поля. После
+                    регистрации вы получите информационное письмо. Личные сведения, полученные в распоряжение
+                    интернет-магазина при регистрации или каким-либо иным образом, не будут без разрешения пользователей
+                    передаваться третьим организациям и лицам за исключением ситуаций, когда этого требует закон или
+                    судебное решение.
+                </div>
+            </form>
+            <div class="register">
+                <div class="title">Регистрация</div>
+                Быстро, удобно, легко!
+                <ul>
+                    <li>Используйте введенные ранее данные</li>
+                    <li>Отслеживайте статус заказа</li>
+                    <li>Получайте персонализированные предложения</li>
+                    <li>Накапливайте и тратьте бонусные рубли</li>
+                    <li>Сохраняйте историю заказов</li>
+                </ul>
+                <a href="{{ path("fos_user_registration_register") }}" data-event="signUp">Зарегистрироваться</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -12,21 +12,22 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
-use Shop\UserBundle\Form\Type\RegistrationType;
+use Shop\FrontendBundle\Form\Type\RegistrationType;
 use Symfony\Component\Security\Core\SecurityContext;
-use Shop\UserBundle\Form\Type\ChangePasswordFormType;
+use Shop\FrontendBundle\Form\Type\ChangePasswordFormType;
 
 class UserController extends Controller
 {
     public function registrationUserAction(Request $request){
-        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
-//        $formFactory = $this->container->get('fos_user.registration.form.factory');
-        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
-        $userManager = $this->container->get('fos_user.user_manager');
-        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
-        $dispatcher = $this->container->get('event_dispatcher');
+        /** @var $formFactory FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var $userManager UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
 
-        $user = $this->getNewObject();
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -35,32 +36,20 @@ class UserController extends Controller
             return $event->getResponse();
         }
 
-        $form = $this->createForm($this->getNewType(), $user, array());
+        $form = $formFactory->createForm();
+        $form->setData($user);
 
-        if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
-
-                $password = $this->generatePassword(6);
-                $this->get('session')->set('user_psw', $password);
-
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-                $tempRole = $form->getData()->getTempRole();
-                $role = 'DESIGNER_ROLE';
-                if($tempRole == 2)
-                    $role = 'PROGRAMMER_ROLE';
-                if($tempRole == 3)
-                    $role = 'SERVICE_ROLE';
-
-                $user->addRole($role);
-                $user->setPlainPassword($password);
-                $user->setPassword($password);
 
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
+                    $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
 
@@ -68,10 +57,17 @@ class UserController extends Controller
 
                 return $response;
             }
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
+
+            if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
         }
 
         return $this->render(
-            'ShopFrontendBundle:User:index.html.twig', array(
+            'ShopFrontendBundle:User:register.html.twig', array(
                 'form' => $form->createView())
         );
     }
@@ -298,6 +294,14 @@ class UserController extends Controller
         return $this->container->get('templating')->renderResponse($template, $data);
     }
 
+//    public function testCheckAction(Request $request){
+//        $data = $request->request->all();
+//
+//        $login = $this->get('user_api')->login($data);
+//
+//        var_dump($login); exit;
+//    }
+
     public function checkAction()
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
@@ -310,7 +314,7 @@ class UserController extends Controller
 
     public function redirectAuthAction(){
         return $this->render(
-            'ShopFrontendBundle:User:redirectAuth.html.twig', array()
+            'ShopFrontendBundle:User:redirect.html.twig', array()
         );
     }
 

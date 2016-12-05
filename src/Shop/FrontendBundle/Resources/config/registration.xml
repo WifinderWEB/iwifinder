@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="fos_user_registration_register" pattern="/registration">
+    <route id="fos_user_registration_register" pattern="/user/registration">
         <default key="_controller">ShopFrontendBundle:User:registrationUser</default>
     </route>
 

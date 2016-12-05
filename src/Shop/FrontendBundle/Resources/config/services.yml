@@ -1,7 +1,8 @@
 parameters:
 #    shop_frontend.example.class: Esser\FrontendBundle\Example
 
-services:
-#    shop_frontend.example:
-#        class: %shop_frontend.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+#services:
+#    shop.form.registration:
+#        class: Shop\FrontendBundle\Form\Type\RegistrationType
+#        tags:
+#            - { name: form.type, alias: shop_user_registration }

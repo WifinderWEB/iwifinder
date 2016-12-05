@@ -17,6 +17,12 @@
                     </a>
                 </li>
                 <li>
+                    {% set link = "/brands/" ~ project.alias %}
+                    <a href="{{link|localeLink()}}">
+                        <span>{{ project.title }}</span>
+                    </a>
+                </li>
+                <li>
                     <span>{{ project.title }}</span>
                 </li>
             </ul>
@@ -40,7 +46,7 @@
                 {% for one in items %}
                     {% if one.alias is defined %}
                         <li>
-                            {% set link = "/brands/" ~ project.alias ~ '/'~ one.alias %}
+                            {% set link = "/brands/" ~ project.alias ~ '/' ~ one.alias %}
                             <a href="{{link|localeLink()}}"><h3>{{ one.title }}</h3></a>
                             <span class="img">
                                 {% if one.image_path is defined %}

@@ -35,7 +35,8 @@
         </li>
         {% endfor %}
         <li class="brands">
-            <a href="/brands">Каталог по брендам</a>
+            {% set link = "/brands" %}
+            <a href="{{link|localeLink()}}">Каталог по брендам</a>
         </li>
     </ul>
 </nav>

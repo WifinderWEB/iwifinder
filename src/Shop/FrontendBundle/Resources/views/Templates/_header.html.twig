@@ -2,6 +2,7 @@
     <div class="top-menu">
         <div class="wrapper">
             {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'top_menu'})) %}
+            {% include 'ShopFrontendBundle:Templates:_personal.html.twig' %}
         </div>
     </div>
 

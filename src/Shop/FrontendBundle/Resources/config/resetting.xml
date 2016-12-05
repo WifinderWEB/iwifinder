@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="fos_user_resetting_request" pattern="/resetting/request">
+    <route id="fos_user_resetting_request" pattern="/user/resetting/request">
         <default key="_controller">FOSUserBundle:Resetting:request</default>
         <requirement key="_method">GET</requirement>
     </route>

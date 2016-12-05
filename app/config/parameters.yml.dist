@@ -2,11 +2,18 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_host: localhost
+    database_port: null
+    database_name: dev_esser_shop
+    database_user: webdev
+    database_password: fd78rw42
+
+    database2_host: localhost
+    database2_port: null
+    database2_name: dev_esser_catalog
+    database2_user: webdev
+    database2_password: fd78rw42
+
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 

@@ -630,7 +630,7 @@ section.register form .form-description{
 }
 section.register form label{
     display: block;
-    padding-bottom: 9px;
+    margin-top: 9px;
 }
 section.register form label .error{
     color: red;
@@ -758,6 +758,15 @@ section.register .login-soc{
     display: inline-block;
     vertical-align: top;
     width: 415px;
+}
+section.register form ul li{
+    color: #f00;
+}
+section.register form .confirm.error{
+    color: #f00;
+}
+section.register form .error .input{
+    border-color: #f00;
 }
 
 

@@ -28,8 +28,10 @@ class CatalogApi extends Api {
         return json_decode($t, true);
     }
 
-    public function getTreeByAlias($alias){
+    public function getTreeByAlias($alias, $brand = null){
         $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true';
+        if($brand)
+            $query = $query . '&brand=' . $brand;
         $t = $this->getContent($query);
         return json_decode($t, true);
     }
