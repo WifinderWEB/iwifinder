@@ -1163,4 +1163,13 @@ section.register div.input.select ul li{
 section.register div.input.select ul li:hover{
     color: #333
 }
-
+section.register .span6{
+    width: 50%;
+    float: left;
+}
+section.register form .span6 input{
+    width: 84%;
+}
+section.register form .span6 input:first-child{
+    width: 80%;
+}

@@ -33,8 +33,9 @@ class Cart{
         if(isset($good['sale'])){
             if(isset($good['sale']['retail_price']))
                 $this->goods[$good['id']]['price'] = $good['sale']['retail_price'];
+
             if(isset($good['sale']['discount']))
-                $this->goods[$good['id']]['discount'] = $good['sale']['discount'];
+                $this->goods[$good['id']]['discount'] = round($good['sale']['retail_price']/100 * $good['sale']['discount'], 2);
         }
     }
 

@@ -1,23 +1,29 @@
 <nav class="main ">
-    <a href="/catalog/">Каталог товаров</a>
+    {% set link = "/catalog/" %}
+    <a href="{{link|localeLink()}}">Каталог товаров</a>
     <ul>
         {% for one in items %}
         <li>
-            <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+            {% set link = "/catalog/" ~ one.alias %}
+            <a href="{{link|localeLink()}}">{{ one.title }}</a>
             {% if one.child is defined and one.child|length > 0 %}
             <div class="submenu">
-                <a href="/catalog/{{one.alias}}">{{ one.title }}</a>
+                {% set link = "/catalog/" ~ one.alias %}
+                <a href="{{link|localeLink()}}">{{ one.title }}</a>
                 <ul>
                     {% for one2 in one.child %}
                     <li>
-                        <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                        {% set link = "/catalog/" ~ one2.alias %}
+                        <a href="{{link|localeLink()}}">{{ one2.title }}</a>
                         {% if one2.child is defined and one2.child|length > 0 %}
                         <div class="submenu2">
-                            <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                            {% set link = "/catalog/" ~ one2.alias %}
+                            <a href="{{link|localeLink()}}">{{ one2.title }}</a>
                             <ul>
                                 {% for one3 in one2.child %}
                                     <li>
-                                        <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                        {% set link = "/catalog/" ~ one3.alias %}
+                                        <a href="{{link|localeLink()}}">{{ one3.title }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>

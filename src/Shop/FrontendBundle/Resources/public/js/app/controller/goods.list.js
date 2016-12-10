@@ -149,12 +149,14 @@ function GoodsListCtrl($scope, $http){
     }
 
     function Init(){
-        $scope.goodsList = goodsList;
+        if(goodsList && goodsList.length > 0)
+            $scope.goodsList = goodsList;
         $scope.alias = alias;
-        $scope.count = count;
+        $scope.count = count ? count : 0;
         if($scope.goodsList.length > 0)
             $scope.issetGoods = true;
 
+        console.log($scope.count);
         $('#filterform').on('click','.disabled label',function(e){ e.preventDefault(); e.stopPropagation(); return false; });
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\ApiBundle\Entity;
+namespace Shop\OrderBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
@@ -129,7 +129,7 @@ class Order{
     protected $itog;
 
     /**
-     * @ORM\OneToMany(targetEntity="Goods", mappedBy="order")
+     * @ORM\OneToMany(targetEntity="Shop\ApiBundle\Entity\Goods", mappedBy="order")
      */
     protected $goods;
     /**

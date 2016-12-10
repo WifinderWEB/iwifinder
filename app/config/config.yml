@@ -42,7 +42,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ PiZoneBackendBundle, ShopFrontendBundle ]
+    bundles:        [ PiZoneBackendBundle, ShopFrontendBundle, ShopOrderBundle ]
     java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -100,22 +100,19 @@ doctrine:
                     PiZoneContentBundle: ~
                     PiZoneLayoutBundle: ~
                     PiZoneMenuBundle: ~
-                    PiZoneUserBundle: ~
                     PiZoneWebItemBundle: ~
                     ShopApiBundle: ~
                     ShopCatalogBundle: ~
                     ShopFrontendBundle: ~
-                    FOSUserBundle: ~
+#                    FOSUserBundle: ~
             user:
                 naming_strategy: doctrine.orm.naming_strategy.underscore
                 connection: user
 #                auto_mapping: true
                 mappings:
-                    ShopApiBundle: ~
-                    ShopCatalogBundle: ~
-                    ShopFrontendBundle: ~
                     PiZoneUserBundle: ~
-#                    FOSUserBundle: ~
+                    FOSUserBundle: ~
+                    ShopOrderBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -131,6 +128,12 @@ fos_user:
     firewall_name: main, public
     user_class: PiZone\UserBundle\Entity\User
     registration:
+        confirmation:
+#            from_email: # Use this node only if you don't want the global email address for the confirmation email
+#                address:        ...
+#                sender_name:    ...
+            enabled:    true # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type: Shop\FrontendBundle\Form\Type\RegistrationType
             validation_groups:

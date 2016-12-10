@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Shop\CatalogBundle\ShopCatalogBundle(),
             new Shop\FrontendBundle\ShopFrontendBundle(),
             new Shop\ApiBundle\ShopApiBundle(),
+            new Shop\OrderBundle\ShopOrderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

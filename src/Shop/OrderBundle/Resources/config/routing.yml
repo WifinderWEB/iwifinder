@@ -1,0 +1,12 @@
+shop_frontend_order_new:
+    path:  /order/new
+    defaults: { _controller: ShopOrderBundle:Order:new }
+
+shop_frontend_order_create:
+    path:  /order/create
+    defaults: { _controller: ShopOrderBundle:Order:create }
+    methods: [POST]
+
+shop_frontend_order_empty:
+    path:  /order/empty
+    defaults: { _controller: ShopFrontendBundle:Content:index, alias: 'order_empty' }

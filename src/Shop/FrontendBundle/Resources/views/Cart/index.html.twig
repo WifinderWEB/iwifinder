@@ -46,7 +46,6 @@
         <h1>Корзина</h1>
         {% verbatim %}
         <div class="cart" ng-controller="CartCtrl">
-            <form action="" method="post" ng-submit="order()">
                 <table>
                     <thead>
                     <tr>
@@ -117,12 +116,14 @@
                     <tr class="ng-hide" ng-show="countGoods > 0">
                         <td colspan="3"></td>
                         <td colspan="3">
-                            <input type="submit" value="Оформить заказ" class="button">
+                            {% endverbatim %}
+                                {% set link = "/order/new"%}
+                                <a href="{{link|localeLink()}}" class="button">Оформить заказ</a>
+                            {% verbatim %}
                         </td>
                     </tr>
                     </tbody>
                 </table>
-            </form>
 
 
             <!-- http://google.com/ads/remarketing -->

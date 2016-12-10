@@ -35,23 +35,21 @@
 {% endblock %}
 
 
-{% block content %}
-    <div class="row-fluid catalog">
-        <div class="span8">
-            {{ content.content|raw }}
+{% block body %}
+    <section class="company">
+        <div class="wrapper">
+            <h1>{% block titlePage %}{% endblock %}</h1>
+            <article>
+                {{ content.content|raw }}
+                <p class="copyright">
+                    {% trans_default_domain 'FOSUserBundle' %}
+                    {% if targetUrl %}
+                       <a href="{{ targetUrl }}" class="catalog">{{ 'registration.back'|trans }}</a>
+                    {% endif %}
+                    {% render (controller("ShopFrontendBundle:WebItem:index", {alias: 'content_copyright'})) %}
+                </p>
+            </article>
+            <br class="clear">
         </div>
-        <div class="span4" id="formId">
-            <form action="{{ path('fos_user_change_password') }}" {{ form_enctype(form) }} method="POST" class="fos_user_change_password">
-                <fieldset>
-                    <div class="legend">Создайте пароль!</div>
-                    {{ form_widget(form) }}
-                    <div class="control-group">
-                        <div class="controls" style="text-align: center">
-                            <input type="submit" class="btn" value="Сохранить" />
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    </section>
 {% endblock %}

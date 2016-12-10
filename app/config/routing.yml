@@ -1,3 +1,7 @@
+shop_order:
+    resource: "@ShopOrderBundle/Resources/config/routing.yml"
+    prefix:   /
+
 pi_zone_menu:
     resource: "@PiZoneMenuBundle/Resources/config/routing.yml"
     prefix:   /

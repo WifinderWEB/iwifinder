@@ -43,7 +43,7 @@ class CatalogController extends Controller {
                     'category' => $content['result']['category'],
                     'content' => addslashes(json_encode($content['result']['content'])),
                     'filters' => $content['result']['filters'],
-                    'count' => $content['result']['count'],
+                    'count' => $content['result']['count'] ? $content['result']['count'] : 0,
                     'alias' => $alias
                 )
             );

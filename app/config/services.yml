@@ -32,8 +32,3 @@ services:
         class: Shop\CatalogBundle\Service\FormApi
         arguments:
             - @service_container
-
-    user_api:
-            class: Shop\CatalogBundle\Service\UserApi
-            arguments:
-                - @service_container

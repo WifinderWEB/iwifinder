@@ -333,10 +333,10 @@ class Goods{
     /**
      * Set order
      *
-     * @param \Shop\ApiBundle\Entity\Order $order
+     * @param \Shop\OrderBundle\Entity\Order $order
      * @return Goods
      */
-    public function setOrder(\Shop\ApiBundle\Entity\Order $order = null)
+    public function setOrder(\Shop\OrderBundle\Entity\Order $order = null)
     {
         $this->order = $order;
 
@@ -346,7 +346,7 @@ class Goods{
     /**
      * Get order
      *
-     * @return \Shop\ApiBundle\Entity\Order 
+     * @return \Shop\OrderBundle\Entity\Order
      */
     public function getOrder()
     {
