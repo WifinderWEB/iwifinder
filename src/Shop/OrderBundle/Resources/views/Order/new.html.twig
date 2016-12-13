@@ -42,9 +42,34 @@
 {% block content %}
 <section  class="register">
     <div class="wrapper">
-        {{ form_start(form, {'method': 'post', 'action': path('shop_frontend_order_create')}) }}
         <div class="title">Оформление заказа</div>
-        <h3>Адрес доставки</h3>
+        <div class="table_goods">
+            <h3 class="order_subtitle">Товары в заказе</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Название товара</th>
+                    <th>Количество в заказе</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in entity.goods %}
+                    <tr>
+                        <td><img src="//{{ item.imagePath }}" alt="{{ item.altImage }}" title="{{ item.titleImage }}"/>
+                        </td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.count }}</td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {{ form_start(form, {'method': 'post', 'action': path('shop_frontend_order_create')}) }}
+        <h3 class="order_subtitle">Адрес доставки</h3>
         {{ form_row(form.country) }}
         {{ form_row(form.region) }}
         {{ form_row(form.city) }}
@@ -60,25 +85,33 @@
         </div>
         {{ form_row(form.postcode) }}
 
-        <h3>Товары в заказе</h3>
-        {% for item in entity.goods %}
-            <div>
-                {{ item.title }}
-            </div>
-        {% endfor %}
+        <h3 class="order_subtitle">Получатель</h3>
+        <div>
+            <label for="shop_orderbundle_order_discount" class="required">Ф. И. О.</label>
+            <sapn>{{ user.fullName }}</sapn>
+        </div>
+        <div>
+            <label for="shop_orderbundle_order_discount" class="required">Email</label>
+            <sapn>{{ user.email }}</sapn>
+        </div>
+        <div>
+            <label for="shop_orderbundle_order_discount" class="required">Телефон</label>
+            <sapn>{{ user.phone }}</sapn>
+        </div>
 
+        <h3 class="order_subtitle">Итого</h3>
         <div>
             <label for="shop_orderbundle_order_discount" class="required">Скидка</label>
-            <sapn>{{ form.discount.vars.value }}</sapn>
+            <sapn>{{ entity.discount }}</sapn> руб.
+        </div>
+
+        <div class="order_itog">
+            <label for="shop_orderbundle_order_itog" class="required">К оплате</label>
+            <sapn>{{ entity.itog }}</sapn> руб.
         </div>
 
         <div>
-            <label for="shop_orderbundle_order_itog" class="required">Итого к оплате</label>
-            <sapn>{{ form.itog.vars.value }}</sapn>
-        </div>
-
-        <div>
-            <input type="submit" name="order_submit_button" value="Оформить" />
+            <input type="submit" name="order_submit_button" value="Оформить"/>
         </div>
         {{ form_end(form) }}
     </div>

@@ -122,8 +122,9 @@ function CartInfoCtrl($scope, $timeout){
     }
 
     function order(){
-        // $('#' + $scope.cartModalId).hide();
-        // window.location.hash = '/order/';
+        $('#' + $scope.cartModalId).hide();
+        $('body').removeClass('modal-open');
+        window.location.hash = '/order/new';
     }
 
     function executeQuery(query, callback){

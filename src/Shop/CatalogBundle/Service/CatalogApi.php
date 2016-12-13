@@ -88,6 +88,7 @@ class CatalogApi extends Api {
             curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
             if($result = curl_exec($curl)) {
                 return json_decode($result, true);
             }

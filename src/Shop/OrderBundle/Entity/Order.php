@@ -19,37 +19,10 @@ class Order{
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Please enter last name.", groups={"Order"})
-     * @Assert\Regex(
-     *       pattern="/^([a-zA-Zа-яА-ЯёЁ]+(\s+)?)+([a-zA-Zа-яА-ЯёЁ]+)$/u",
-     *       message="Field can contain only letters.",
-     *       groups={"Order"}
-     * )
+     * @ORM\ManyToOne(targetEntity="PiZone\UserBundle\Entity\User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    protected $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Please enter middle name.", groups={"Order"})
-     * @Assert\Regex(
-     *       pattern="/^([a-zA-Zа-яА-ЯёЁ]+(\s+)?)+([a-zA-Zа-яА-ЯёЁ]+)$/u",
-     *       message="Field can contain only letters.",
-     *       groups={"Order"}
-     * )
-     */
-    protected $middleName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Please enter first name.", groups={"Order"})
-     * @Assert\Regex(
-     *       pattern="/^([a-zA-Zа-яА-ЯёЁ]+(\s+)?)+([a-zA-Zа-яА-ЯёЁ]+)$/u",
-     *       message="Field can contain only letters.",
-     *       groups={"Order"}
-     * )
-     */
-    protected $firstName;
+    protected $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -97,29 +70,7 @@ class Order{
     protected $postcode;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Please enter phone.", groups={"Order"})
-     * @Assert\Regex(
-     *       pattern="/^\+([\d]{1})\s\(([\d]{3})\)\s([\d]{3})\-([\d]{4})$/",
-     *       message="Wrong phone.",
-     *       groups={"Order"}
-     * )
-     */
-    protected $phone;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Please enter email.", groups={"Order"})
-     * @Assert\Regex(
-     *       pattern="/^[-._\+a-zA-Z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/",
-     *       message="Wrong email.",
-     *       groups={"Order"}
-     * )
-     */
-    protected $email;
-
-    /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     protected $discount;
 
@@ -161,75 +112,6 @@ class Order{
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     * @return Order
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string 
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * Set middleName
-     *
-     * @param string $middleName
-     * @return Order
-     */
-    public function setMiddleName($middleName)
-    {
-        $this->middleName = $middleName;
-
-        return $this;
-    }
-
-    /**
-     * Get middleName
-     *
-     * @return string 
-     */
-    public function getMiddleName()
-    {
-        return $this->middleName;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     * @return Order
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string 
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
     }
 
     /**
@@ -428,52 +310,6 @@ class Order{
     }
 
     /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return Order
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Order
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set discount
      *
      * @param integer $discount
@@ -517,5 +353,28 @@ class Order{
     public function getItog()
     {
         return $this->itog;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \PiZone\UserBundle\Entity\User $user
+     * @return Order
+     */
+    public function setUser(\PiZone\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \PiZone\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

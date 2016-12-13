@@ -41,6 +41,11 @@ class User extends BaseUser
      */
     protected $enabled = true;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Order", mappedBy="user", cascade={"remove", "persist"})
+     */
+    protected $orders;
+
 
     public function __construct()
     {
@@ -107,5 +112,38 @@ class User extends BaseUser
     
     public function getEnabled(){
         return $this->enabled;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Shop\OrderBundle\Entity\Order $orders
+     * @return User
+     */
+    public function addOrder(\Shop\OrderBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Shop\OrderBundle\Entity\Order $orders
+     */
+    public function removeOrder(\Shop\OrderBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

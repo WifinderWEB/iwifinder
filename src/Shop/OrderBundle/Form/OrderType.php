@@ -2,8 +2,10 @@
 
 namespace Shop\OrderBundle\Form;
 
+use Shop\ApiBundle\Entity\Goods;
 use Shop\ApiBundle\Form\GoodsType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,10 +20,6 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('id')
-//            ->add('lastName', TextType::class, array('label' => 'Фамилия'))
-//            ->add('middleName', TextType::class, array('label' => 'Отчество'))
-//            ->add('firstName', TextType::class, array('label' => 'Имя'))
             ->add('country', TextType::class, array('label' => 'Страна'))
             ->add('region', TextType::class, array('label' => 'Регион'))
             ->add('city', TextType::class, array('label' => 'Населенный пункт'))
@@ -29,15 +27,6 @@ class OrderType extends AbstractType
             ->add('house', TextType::class, array('label' => 'Дом'))
             ->add('room', TextType::class, array('label' => 'Квартира'))
             ->add('postcode', TextType::class, array('label' => 'Почтовый индекс'))
-//            ->add('email', HiddenType::class)
-//            ->add('phone', HiddenType::class)
-            ->add('discount', HiddenType::class)
-            ->add('itog', HiddenType::class)
-//            ->add('goods', 'collection', array(
-//                'allow_add' => true,
-//                'allow_delete' => true,
-//                'type' => new GoodsType()
-//            ))
         ;
     }
     
