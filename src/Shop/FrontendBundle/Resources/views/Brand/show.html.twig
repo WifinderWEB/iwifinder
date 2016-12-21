@@ -44,7 +44,7 @@
         <div class="wrapper">
             <ul>
                 {% for one in items %}
-                    {% if one.alias is defined %}
+                    {% if one.alias is defined and one['child'] is defined %}
                         <li>
                             {% set link = "/brands/" ~ project.alias ~ '/' ~ one.alias %}
                             <a href="{{link|localeLink()}}"><h3>{{ one.title }}</h3></a>

@@ -35,6 +35,12 @@ class CatalogApi extends Api {
         $t = $this->getContent($query);
         return json_decode($t, true);
     }
+
+    public function getTreeByAliasForBrand($alias, $brand){
+        $query = $this->getUrl() . 'api/getTreeByAliasForBrand/' .$alias .'/'.$brand.'?project_info=true';
+        $t = $this->getContent($query);
+        return json_decode($t, true);
+    }
     
     public function getTopCategories(){
         $t = $this->getContent($this->getUrl() . 'api/'.$this->getProjectId().'/getCategoriesForLevel/1');
