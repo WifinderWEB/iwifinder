@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <span>{{ project.title }}</span>
+                    <span>{{ content.title }}</span>
                 </li>
             </ul>
         </div>
@@ -34,12 +34,16 @@
 
     <section class="brands-filter">
         <div class="wrapper">
-            <h1 class="section-title">Каталог товаров "{{ project.title }}"</h1>
+            <h1 class="section-title">{{ content.title }}</h1>
+            {% if content.content is defined %}
             <article>
-                {{ project.description|raw }}
+                {{ content.content|raw }}
             </article>
+            {% endif %}
         </div>
     </section>
+
+    {% if items | length > 0 %}
     <section class="catalog-tree">
         <div class="wrapper">
             <ul>
@@ -80,4 +84,27 @@
             </ul>
         </div>
     </section>
+    {% endif %}
+
+    {% if count > 0%}
+    <section class="catalog" ng-controller="GoodsListCtrl">
+        <div class="wrapper">
+            {% if category.title is defined %}
+                <h1>{{ category.title }}</h1>
+                {% verbatim %}
+                    <span>({{ count }})</span>
+                {% endverbatim %}
+                <br class="clear">
+            {% endif %}
+            <article>
+                {% include 'ShopFrontendBundle:Brand:_article_categories.html.twig' %}
+            </article>
+            <aside>
+                {#{% include 'ShopFrontendBundle:Catalog:_aside_categories.html.twig' %}#}
+            </aside>
+            <div class="print_page"><a href="javascript:window.print()">Печать страницы</a></div>
+        </div>
+    </section>
+    {% endif %}
+
 {% endblock %}

@@ -114,6 +114,8 @@ function GoodsListCtrl($scope, $http){
     function LinkGoods(item){
         var link = window.location.href;
 
+        if(item.category)
+            link  = '/catalog/' + item.category.alias;
         return link + '/' + item.alias;
     }
 
@@ -151,6 +153,8 @@ function GoodsListCtrl($scope, $http){
     function Init(){
         if(goodsList && goodsList.length > 0)
             $scope.goodsList = goodsList;
+
+        console.log(goodsList);
         $scope.alias = alias;
         $scope.count = count ? count : 0;
         if($scope.goodsList.length > 0)

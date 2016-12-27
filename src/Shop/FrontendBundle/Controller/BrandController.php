@@ -45,10 +45,23 @@ class BrandController extends Controller
         if ($catalog['result'] == 'error')
             throw new NotFoundHttpException($catalog['message']);
 
+        $goods = array();
+        $items = array();
+        foreach($catalog['result']['items'] as $one){
+            if(!isset($one['child']))
+                $goods[] = $one;
+            else
+                $items[] = $one;
+        }
+
         return $this->render(
             'ShopFrontendBundle:Brand:show.html.twig', array(
-                'items' => $catalog['result']['items'],
-                'project' => $catalog['result']['project']
+                'alias' => $alias,
+                'items' => $items,
+                'project' => $catalog['result']['project'],
+                'goods' => addslashes(json_encode($goods)),
+                'content' => $catalog['result']['content'],
+                'count' => count($goods)
             )
         );
     }
