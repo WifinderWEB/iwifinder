@@ -60,6 +60,7 @@ class BrandController extends Controller
                 'items' => $items,
                 'project' => $catalog['result']['project'],
                 'goods' => addslashes(json_encode($goods)),
+                'filters' => $catalog['result']['filters'],
                 'content' => $catalog['result']['content'],
                 'count' => count($goods)
             )

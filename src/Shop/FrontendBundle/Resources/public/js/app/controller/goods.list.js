@@ -68,10 +68,33 @@ function GoodsListCtrl($scope, $http){
                 $scope.lastPopup.click(function(){
                     $scope.goodsList = data.content;
                     $scope.count = data.count;
+                    $($scope.filterForm).find('.filter').each(function(){
+                        var li = $(this).find('li');
+                        $.each(li, function(i){
+                            $(li[i]).data('count',0).attr('data-count',0);
+                            $(li[i]).find(">span").text(0);
+                        });
+
+                    });
+                    if(data.filters)
+                        $scope.dataFilter = data.filters;
                     $.each(data.filters, function(i, group){
                         $.each(group.parameters, function(j, param){
-                            $('#param_' + param.id).closest('label').next('span').text(param.count);
+                            $('#params_' + param.id).closest('label').next('span').text(param.count);
+                            if(param.count > 0){
+                                var li = $('#params_' + param.id).closest('li');
+                                li.data('count',param.count).attr('data-count',param.count);
+                                li.removeClass('disabled');
+                            }
                         });
+                    });
+                    $($scope.filterForm).find('.filter').each(function(){
+                        var li = $(this).find('li');
+                        $.each(li, function(i){
+                            if($(li[i]).data('count') == 0)
+                                $(li[i]).addClass('disabled');
+                        });
+
                     });
                     hidePopUp();
                     $scope.$apply();
@@ -85,10 +108,6 @@ function GoodsListCtrl($scope, $http){
     }
 
     function filterPopUpRender($target) {
-        $($scope.filterForm).find('.filter').not($target.closest('.filter')).each(function(){
-            $('li').data('count',0).attr('data-count',0);
-            $('li', this).addClass('disabled').find(">span").text(0);
-        });
         var $label  = $($target.closest('label'));
         $scope.lastPopup.offset($.extend($label.position(), {left: '50%'}, {}))
     }
@@ -128,6 +147,8 @@ function GoodsListCtrl($scope, $http){
             success: function(data){
                 $scope.goodsList = data.content;
                 $scope.count = data.count;
+                if(data.filters)
+                    $scope.dataFilter = data.filters;
                 $scope.$apply();
             }
         })
@@ -135,12 +156,27 @@ function GoodsListCtrl($scope, $http){
 
     function GetFilterParameters(){
         var params = [],
-            result = {};
+            result = {},
+            strParam = {};
+
         $.each($scope.filters, function(i, param){
             if(param)
-                params.push(i);
+                params.push(parseInt(i));
         });
-        result['group_parameters'] = params.join(',');
+
+        for(var key in $scope.dataFilter){
+            var resultParams = [];
+            for(var key2 in $scope.dataFilter[key].parameters){
+                var obj =  $scope.dataFilter[key].parameters[key2];
+                if($.inArray(obj.id, params) >= 0)
+                    resultParams.push(obj.id);
+            }
+
+            if(resultParams.length > 0)
+                strParam[key] = resultParams;
+        }
+
+        result['group_parameters'] = JSON.stringify(strParam);
 
         if($scope.sortBy)
              result['sort_by'] = $scope.sortBy;
@@ -154,13 +190,14 @@ function GoodsListCtrl($scope, $http){
         if(goodsList && goodsList.length > 0)
             $scope.goodsList = goodsList;
 
-        console.log(goodsList);
         $scope.alias = alias;
         $scope.count = count ? count : 0;
         if($scope.goodsList.length > 0)
             $scope.issetGoods = true;
 
-        console.log($scope.count);
+        if(dataFilters)
+            $scope.dataFilter = dataFilters;
+
         $('#filterform').on('click','.disabled label',function(e){ e.preventDefault(); e.stopPropagation(); return false; });
     }
 

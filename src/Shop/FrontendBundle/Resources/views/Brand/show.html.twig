@@ -37,7 +37,7 @@
             <h1 class="section-title">{{ content.title }}</h1>
             {% if content.content is defined %}
             <article>
-                {{ content.content|raw }}
+                {{ content.content.anons|raw }}
             </article>
             {% endif %}
         </div>
@@ -100,7 +100,7 @@
                 {% include 'ShopFrontendBundle:Brand:_article_categories.html.twig' %}
             </article>
             <aside>
-                {#{% include 'ShopFrontendBundle:Catalog:_aside_categories.html.twig' %}#}
+                {% include 'ShopFrontendBundle:Brand:_aside_categories.html.twig' %}
             </aside>
             <div class="print_page"><a href="javascript:window.print()">Печать страницы</a></div>
         </div>

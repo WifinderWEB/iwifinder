@@ -5,6 +5,7 @@
         {% if content != null %}
         var goodsList = JSON.parse("{{content|raw }}");
         {% endif %}
+        var dataFilters = JSON.parse("{{ dataFilters|raw }}");
         var alias= "{{ alias }}";
         var count = {{ count }};
     </script>

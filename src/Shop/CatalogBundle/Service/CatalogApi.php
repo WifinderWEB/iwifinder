@@ -29,7 +29,7 @@ class CatalogApi extends Api {
     }
 
     public function getTreeByAlias($alias, $brand = null){
-        $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true';
+        $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true&with_filters=true';
         if($brand)
             $query = $query . '&brand=' . $brand;
         $t = $this->getContent($query);
@@ -128,14 +128,15 @@ class CatalogApi extends Api {
     public function getCategoryByAlias($alias, $data = null){
         $queryString = '';
         if($data){
-            $query = array();
-            foreach($data as $key => $one){
-                $query[] = $key . '=' . $one;
-            }
-
-            if($query) {
-                $queryString = '?' . implode('&', $query);
-            }
+//            $query = array();
+//            foreach($data as $key => $one){
+//                $query[] = $key . '=' . $one;
+//            }
+//
+//            if($query) {
+//                $queryString = '?' . implode('&', $query);
+//            }
+            $queryString = '?' . http_build_query($data);
         }
 
         $t = $this->getContent($this->getUrl() . 'api/'.$this->getProjectId().'/getCategoryByAlias/'.$alias . $queryString);
