@@ -2,7 +2,7 @@
 
 namespace Shop\OrderBundle\Controller;
 
-use Shop\ApiBundle\Entity\Goods;
+use Shop\OrderBundle\Entity\Goods;
 use Shop\OrderBundle\Entity\Order;
 use Shop\OrderBundle\Form\OrderType;
 use Symfony\Component\HttpFoundation\Request;
@@ -109,30 +109,31 @@ class OrderController extends Controller
         $entity->setItog($itog-$discount);
         $entity->setDiscount($discount);
         $entity->setUser($this->getUser());
+        $entity->setProjectId($this->container->getParameter('project_id'));
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
 
         if ($form->isValid()) {
-            $data = $this->normalizeData($request, $form, $entity);
-            $data['goods'] = $cart->getGoods();
+            try {
+                $em = $this->getDoctrine()->getManager('user');
+                $em->persist($entity);
+                $em->flush();
 
-            $order = $this->get('catalog_api')->createOrder($data);
-
-            if ($order['result'] == 'ok') {
                 if ($this->get('session')->has('Cart')) {
                     $this->get('session')->remove('Cart');
                 }
                 return $this->render(
                     'ShopOrderBundle:Order:result.html.twig', array(
-                        'order' => $order
+                        'order' => $entity
                     )
                 );
-            } else {
+            }
+            catch (\Exception $e){
                 $result = array(
                     'result' => 'error',
-                    'message' => $order['message']
+                    'message' => $e->getMessage()
                 );
             }
         }
@@ -153,16 +154,6 @@ class OrderController extends Controller
         return $form;
     }
 
-    private function normalizeData($request, $form, $entity){
-        $data = $request->request->get($form->getName());
-        $data['project'] = $this->container->getParameter('project_id');
-        $data['discount'] = $entity->getDiscount();
-        $data['itog'] = $entity->getItog();
-        $data['user'] = $entity->getUser()->getId();
-        unset($data['_token']);
-
-        return array('catalog_orderbundle_order' => $data);
-    }
 
     public function emptyAction(Request $request)
     {

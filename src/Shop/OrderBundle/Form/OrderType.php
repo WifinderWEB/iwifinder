@@ -2,11 +2,7 @@
 
 namespace Shop\OrderBundle\Form;
 
-use Shop\ApiBundle\Entity\Goods;
-use Shop\ApiBundle\Form\GoodsType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

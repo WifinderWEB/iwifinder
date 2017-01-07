@@ -9,6 +9,13 @@ services:
         tags:
             - { name: twig.extension }
 
+    gedmo.listener.timestampable:
+        class: Gedmo\Timestampable\TimestampableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ @annotation_reader ] ]
+
     pizone_form:
         class: PiZone\ContentBundle\Services\PiZoneForm
 

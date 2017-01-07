@@ -7,16 +7,21 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Order
- * @package Shop\ApiBundle\Entity
- * @ORM\Entity
+ * @ORM\Table(name="wf_order")
+ * @ORM\Entity(repositoryClass="Shop\OrderBundle\Entity\Repository\OrderRepository")
  */
 class Order{
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $project_id = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="PiZone\UserBundle\Entity\User", inversedBy="orders")
@@ -80,9 +85,26 @@ class Order{
     protected $itog;
 
     /**
-     * @ORM\OneToMany(targetEntity="Shop\ApiBundle\Entity\Goods", mappedBy="order")
+     * @ORM\OneToMany(targetEntity="Shop\OrderBundle\Entity\Goods", mappedBy="order", cascade={"remove", "persist"})
      */
     protected $goods;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var datetime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated;
+
     /**
      * Constructor
      */
@@ -278,10 +300,10 @@ class Order{
     /**
      * Add goods
      *
-     * @param \Shop\ApiBundle\Entity\Goods $goods
+     * @param \Shop\OrderBundle\Entity\Goods $goods
      * @return Order
      */
-    public function addGood(\Shop\ApiBundle\Entity\Goods $goods)
+    public function addGood(\Shop\OrderBundle\Entity\Goods $goods)
     {
         $this->goods[] = $goods;
         $goods->setOrder($this);
@@ -292,9 +314,9 @@ class Order{
     /**
      * Remove goods
      *
-     * @param \Shop\ApiBundle\Entity\Goods $goods
+     * @param \Shop\OrderBundle\Entity\Goods $goods
      */
-    public function removeGood(\Shop\ApiBundle\Entity\Goods $goods)
+    public function removeGood(\Shop\OrderBundle\Entity\Goods $goods)
     {
         $this->goods->removeElement($goods);
     }
@@ -376,5 +398,74 @@ class Order{
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Order
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Order
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set project_id
+     *
+     * @param integer $projectId
+     * @return Order
+     */
+    public function setProjectId($projectId)
+    {
+        $this->project_id = $projectId;
+
+        return $this;
+    }
+
+    /**
+     * Get project_id
+     *
+     * @return integer
+     */
+    public function getProjectId()
+    {
+        return $this->project_id;
     }
 }
