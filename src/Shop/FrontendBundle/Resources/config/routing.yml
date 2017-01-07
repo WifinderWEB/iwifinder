@@ -38,9 +38,9 @@ shop_frontend_check_user:
     pattern:  /check_user
     defaults: { _controller: ShopFrontendBundle:Content:index, alias: check_user }
 
-shop_frontend_order:
-    pattern:  /order/{catalog_alias}
-    defaults: { _controller: ShopFrontendBundle:Catalog:order, alias: order }
+#shop_frontend_order:
+#    pattern:  /order/{catalog_alias}
+#    defaults: { _controller: ShopFrontendBundle:Catalog:order, alias: order }
 
 shop_frontend_brand_list:
     pattern:  /brands
@@ -49,6 +49,10 @@ shop_frontend_brand_list:
 shop_frontend_brand_catalog:
     pattern:  /brands/{alias}
     defaults: { _controller: ShopFrontendBundle:Brand:brand}
+
+shop_frontend_brand_catalog_category:
+    pattern:  /brands/{brand}/{alias}
+    defaults: { _controller: ShopFrontendBundle:Brand:show}
 
 shop_frontend_catalog_list:
     pattern:  /catalog

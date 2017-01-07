@@ -49,13 +49,15 @@
                             <ul>
                                {% for one2 in one.child %}
                                 <li>
-                                    <a href="/catalog/{{ one2.alias }}">{{ one2.title }}</a>
+                                    {% set link = "/catalog/" ~ one2.alias %}
+                                    <a href="{{link|localeLink()}}">{{ one2.title }}</a>
                                    {% if one2.child is defined and one2.child|length > 0 %}
                                     <span class="readmore"></span>
                                     <ul class="moreinfo">
                                        {% for one3 in one2.child %}
                                         <li>
-                                            <a href="/catalog/{{ one3.alias }}">{{ one3.title }}</a>
+                                            {% set link = "/catalog/" ~ one3.alias %}
+                                            <a href="{{link|localeLink()}}">{{ one3.title }}</a>
                                         </li>
                                        {% endfor %}
                                     </ul>

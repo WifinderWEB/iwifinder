@@ -1,0 +1,120 @@
+{% include 'ShopFrontendBundle:Catalog:_panel_categories.html.twig' %}
+
+<div id="catalogBox">
+    <script type="text/javascript">
+        {% if content != null %}
+        var goodsList = JSON.parse("{{goods|raw }}");
+        {% endif %}
+        var alias= "{{ alias }}";
+        var count = {{ count }};
+    </script>
+    <div style="text-align: center" ng-show="count === ''">
+        <img src="/bundles/pizonebackend/img/ajax-loader.gif"/>
+    </div>
+    {% verbatim %}
+    <div class="table ng-hide" id="productlist" ng-show="count > 0">
+        <div class="product" ng-repeat="item in goodsList">
+            <a target="_blank" href="" class="img"  ng-href="{{LinkGoods(item)}}">
+                <img class="lazy" ng-src="//{{item.image_path}}" alt="{{item.title_image}}" title="{{item.alt_image}}" style="display: inline;">
+            </a>
+            <a target="_blank" href="" class="title" ng-href="{{LinkGoods(item)}}">
+                {{ item.title }}
+            </a>
+            <span class="fulltitle">{{item.title}}</span>
+            <span class="articul">Артикул: <span>{{ item.article }}</span></span>
+            <span class="rating-stars"><span class="star"></span><span class="star"></span>
+            <span class="star"></span><span class="star"></span><span class="star"></span></span>
+            <!--<span class="reviews">-->
+                    <!--<a href="#product_reviews">Отзывы <b>2</b></a> |-->
+                    <!--<a href="#product_forum">Задать вопрос</a></span>-->
+            <div class="description" ng-bind-html="item.anons"></div>
+            <div class="wr">
+
+
+                <ul class="prices sale" ng-if="item.sale">
+                    <li class="price" data-price="31" ng-if="item.sale.discount">
+                        Старая цена <span>{{item.sale.retail_price}} <span class="rub" title="руб.">₽</span>/шт                                    </span>
+                    </li>
+                    <li class="price" data-price="24" ng-if="item.sale.discount">
+                        Ваша цена <span>{{(item.sale.retail_price - item.sale.retail_price*item.sale.discount/100).toFixed(2)}} <span class="rub" title="руб.">₽</span>/шт                                    </span>
+                    </li>
+                    <li class="price" data-price="0" ng-if="item.sale.discount">
+                        Экономия
+                        <span>{{(item.sale.retail_price*item.sale.discount/100).toFixed(2)}} <span class="rub" title="руб.">₽</span></span>
+                    </li>
+                    <li class="price" data-price="24" ng-if="!item.sale.discount">
+                        Цена <span>{{item.sale.retail_price}} <span class="rub" title="руб.">₽</span>/шт                                    </span>
+                    </li>
+                </ul>
+
+                <div class="paid-variant">
+                    <div class="wrap" ng-if="item.sale.quantity > 0">
+                        <span class="readmore"><span></span><span></span></span>
+                        <div class="moreinfo">
+                            <span class="nal help-info hbottom"><span>Наличный расчет</span></span>
+                            <span class="bank help-info hbottom"><span>Банковский перевод</span></span>
+                            <span class="yandex help-info hbottom"><span>Yandex Деньги</span></span>
+                            <span class="webmoney help-info hbottom"><span>Webmoney</span></span>
+                            <span class="sberbank help-info hbottom"><span>Сбербанк Онлайн</span></span>
+                            <span class="alfa help-info hbottom"><span>Альфа-Клик</span></span>
+                            <span class="psb help-info hbottom"><span>Промсвязьбанк, интернет-банк</span></span>
+                        </div>
+                    </div>
+                    <div class="wrap" style="right: 84%" ng-if="item.sale.quantity == 0">
+                        <span class="bank help-info hbottom"><span>Банковский перевод</span></span>
+                    </div>
+                    <span class="visa help-info hbottom"><span>Банковская карта</span></span>
+                    <span class="mastercard help-info hbottom"><span>Банковская карта</span></span>
+                </div>
+                <a href="#" class="buy action-button" ng-click="Click.AddToCart(item)">Купить</a>
+            </div>
+
+            <ul class="stores" ng-if="item.sale.quantity > 0">
+                <li>
+                    Москва
+                    <span class="dotes help-info hbottom">
+                        <b class="hh">Много</b>
+                        <b>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </b>
+                    </span>
+
+                </li>
+                <li class="sklad">Самовывоз <span>Сегодня</span></li>
+            </ul>
+            <ul class="stores" title="На заказ" ng-if="item.sale.quantity == 0">
+                <li>На заказ</li>
+                <li class="sklad">Уточняйте срок поставки</li>
+            </ul>
+
+            <!--<div class="add_to">-->
+                <!--<span class="to_favorite action-button">В закладки</span>-->
+                <!--<span class="to_compare action-button">Сравнить</span>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="table ng-hide" id="productlist" ng-show="count === 0">
+        <span>Не найдено ни одного товара</span>
+    </div>
+
+
+    <!--<div class="showmore css action" data-action="showmore" data-url="/ip-kamery/?SECTION_CODE=ip-kamery&amp;PAGEN_1=2">-->
+        <!--<span>Показать еще</span>-->
+    <!--</div>-->
+    {% endverbatim %}
+
+    {% include 'ShopFrontendBundle:Catalog:_paginator.html.twig' %}
+
+</div>
+
+{% include 'ShopFrontendBundle:Catalog:_panel_categories.html.twig' %}
+
+{#{% if category.content is defined and category.content != '' %}#}
+{#<div class="SEOLanding short_text_box" data-length="500">#}
+    {#{{ category.content|raw }}#}
+{#</div>#}
+{#{% endif %}#}

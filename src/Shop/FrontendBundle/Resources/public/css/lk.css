@@ -630,7 +630,7 @@ section.register form .form-description{
 }
 section.register form label{
     display: block;
-    padding-bottom: 9px;
+    margin-top: 9px;
 }
 section.register form label .error{
     color: red;
@@ -758,6 +758,15 @@ section.register .login-soc{
     display: inline-block;
     vertical-align: top;
     width: 415px;
+}
+section.register form ul li{
+    color: #f00;
+}
+section.register form .confirm.error{
+    color: #f00;
+}
+section.register form .error .input{
+    border-color: #f00;
 }
 
 
@@ -1154,4 +1163,41 @@ section.register div.input.select ul li{
 section.register div.input.select ul li:hover{
     color: #333
 }
-
+section.register .span6{
+    width: 50%;
+    float: left;
+}
+section.register form .span6 input{
+    width: 84%;
+}
+section.register form .span6 input:first-child{
+    width: 80%;
+}
+.order_subtitle{
+    margin-top: 40px;
+    padding: 10px 0;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.table_goods{
+    padding: 0 43px;
+    margin-bottom: 50px;
+}
+.table_goods img{
+    max-height: 70px;
+    max-width: 70px;
+}
+.table_goods table{
+    width: 100%;
+}
+.table_goods tbody tr{
+    border-top: 1px solid #ddd;
+}
+.table_goods td, .table_goods th{
+    padding: 10px;
+}
+.order_itog{
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+}

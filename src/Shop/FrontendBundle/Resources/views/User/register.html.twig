@@ -1,0 +1,48 @@
+{% extends 'ShopFrontendBundle:Templates:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    {% block breadcrumb %}{% endblock %}
+    <section class="register">
+        <div class="wrapper">
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <div class="title">Регистрация</div>
+
+            {{ form_row(form.email) }}
+            {{ form_row(form.username) }}
+
+            {{ form_row(form.full_name) }}
+
+            {{ form_row(form.phone) }}
+
+            {{ form_row(form.plainPassword) }}
+
+            <label class="confirm">
+                <input type="checkbox" name="accept_rules" checked="checked"
+                       value="RULES_ACCEPTED">
+                Настоящим я даю разрешение ООО «Wifinder» в целях заключения и исполнения договора купли-продажи
+                обрабатывать - собирать, записывать, систематизировать, накапливать, хранить, уточнять (обновлять,
+                изменять), извлекать, использовать, передавать (в том числе поручать обработку другим лицам),
+                обезличивать, блокировать, удалять, уничтожать - мои персональные данные: фамилию, имя, номера
+                домашнего и мобильного телефонов, адрес электронной почты. Также я разрешаю ООО "Wifinder" в
+                целях информирования о товарах, работах, услугах осуществлять обработку вышеперечисленных
+                персональных данных и направлять на указанный мною адрес электронной почты и/или на номер мобильного
+                телефона рекламу и информацию о товарах, работах, услугах ООО "Wifinder" и его партнеров.
+                Согласие может быть отозвано мною в любой момент путем направления письменного уведомления по адресу
+                ООО "Wifinder".
+            </label>
+
+            <div>
+                <input type="submit" name="register_submit_button" value="Зарегистрироваться" />
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

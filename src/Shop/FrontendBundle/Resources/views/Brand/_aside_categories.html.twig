@@ -1,0 +1,45 @@
+<div class="catalog-filter">
+    <form id="filterform">
+        <a href="javascript:void(0);" class="reset" ng-click="Click.ClearFilter()">Очистить все</a>
+
+        <input type="hidden" name="SECTION_CODE" value="ip-kamery">
+        {% for key, filter in filters %}
+            <div class="filter active">
+                <span class="name">{{ filter.title }}</span>
+                <div class="block">
+                    <ul class="info">
+                        {% for one in filter.parameters %}
+                            {% if loop.index <= 3 %}
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="params_{{ one.id }}" value="{{ one.id }}" name="params[]" ng-model="filters[{{ one.id }}, {{ key }}]">
+                                    {{ one.title }}
+                                </label>
+                                <span>{{ one.count }}</span>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% if filter.parameters|length > 3 %}
+                    <ul class="moreinfo">
+                        {% for one in filter.parameters %}
+                            {% if loop.index > 3 %}
+                            <li {% if  one.count == 0 %}class="disabled"{% endif %}>
+                                <label>
+                                    <input type="checkbox" id="params_{{ one.id }}" value="{{ one.id }}" name="params[]" ng-model="filters[{{ one.id }}, {{ key }}]">
+                                    {{ one.title }}
+                                </label>
+                                <span>{{ one.count }}</span>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <div class="readmore"><span>Показать все</span><span>Свернуть</span></div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <input type="hidden" id="set_filter" name="set_filter">
+    </form>
+    {#<a href="/extfilter/extfilter.php?SECTION_CODE=ip-kamery&amp;fullfilter=on" class="more-filter" data-event="goToExtFilters">Расширенный фильтр</a>#}
+</div>

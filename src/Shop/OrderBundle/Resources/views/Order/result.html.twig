@@ -1,0 +1,50 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block title %}
+    <title>Моя корзина</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Моя корзина">
+    <meta http-equiv="description" content="Моя корзина">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Моя корзина">
+    <meta http-equiv="Keywords" content="Моя корзина">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css'
+    %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}">
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Оформление заказа</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section  class="register">
+    <div class="wrapper">
+        <div class="title">Оформление заказа</div>
+        <p>Ваш заказ №{{ order.order }} оформлен.</p>
+        <p>В ближайшее время с Вами свяжется наш менеджер.</p>
+    </div>
+</section>
+{% endblock %}

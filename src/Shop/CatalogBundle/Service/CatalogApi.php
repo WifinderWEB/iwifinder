@@ -28,8 +28,16 @@ class CatalogApi extends Api {
         return json_decode($t, true);
     }
 
-    public function getTreeByAlias($alias){
-        $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true';
+    public function getTreeByAlias($alias, $brand = null){
+        $query = $this->getUrl() . 'api/getTreeByAlias/' .$alias .'?project_info=true&with_filters=true';
+        if($brand)
+            $query = $query . '&brand=' . $brand;
+        $t = $this->getContent($query);
+        return json_decode($t, true);
+    }
+
+    public function getTreeByAliasForBrand($alias, $brand){
+        $query = $this->getUrl() . 'api/getTreeByAliasForBrand/' .$alias .'/'.$brand.'?project_info=true';
         $t = $this->getContent($query);
         return json_decode($t, true);
     }
@@ -86,6 +94,7 @@ class CatalogApi extends Api {
             curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
             if($result = curl_exec($curl)) {
                 return json_decode($result, true);
             }
@@ -119,14 +128,15 @@ class CatalogApi extends Api {
     public function getCategoryByAlias($alias, $data = null){
         $queryString = '';
         if($data){
-            $query = array();
-            foreach($data as $key => $one){
-                $query[] = $key . '=' . $one;
-            }
-
-            if($query) {
-                $queryString = '?' . implode('&', $query);
-            }
+//            $query = array();
+//            foreach($data as $key => $one){
+//                $query[] = $key . '=' . $one;
+//            }
+//
+//            if($query) {
+//                $queryString = '?' . implode('&', $query);
+//            }
+            $queryString = '?' . http_build_query($data);
         }
 
         $t = $this->getContent($this->getUrl() . 'api/'.$this->getProjectId().'/getCategoryByAlias/'.$alias . $queryString);

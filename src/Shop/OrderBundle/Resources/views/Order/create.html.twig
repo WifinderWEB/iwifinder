@@ -1,0 +1,120 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block title %}
+    <title>Моя корзина</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Моя корзина">
+    <meta http-equiv="description" content="Моя корзина">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Моя корзина">
+    <meta http-equiv="Keywords" content="Моя корзина">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css'
+    %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}">
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Оформление заказа</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section  class="register">
+        <div class="wrapper">
+            <div class="title">Оформление заказа</div>
+            <div class="table_goods">
+                <h3 class="order_subtitle">Товары в заказе</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Название товара</th>
+                        <th>Количество в заказе</th>
+                        <th>Цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in entity.goods %}
+                        <tr>
+                            <td><img src="//{{ item.imagePath }}" alt="{{ item.altImage }}" title="{{ item.titleImage }}"/>
+                            </td>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.count }}</td>
+                            <td>{{ item.price }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {{ form_start(form, {'method': 'post', 'action': path('shop_frontend_order_create')}) }}
+            <h3 class="order_subtitle">Адрес доставки</h3>
+            {{ form_errors(form) }}
+            {{ form_row(form.country) }}
+            {{ form_row(form.region) }}
+            {{ form_row(form.city) }}
+            {{ form_row(form.street) }}
+            <div class="row">
+                <div class="span6">
+                    {{ form_row(form.house) }}
+                </div>
+                <div class="span6">
+                    {{ form_row(form.room) }}
+                </div>
+                <div class="clear"></div>
+            </div>
+            {{ form_row(form.postcode) }}
+
+            <h3 class="order_subtitle">Получатель</h3>
+            <div>
+                <label for="shop_orderbundle_order_discount" class="required">Ф. И. О.</label>
+                <sapn>{{ user.fullName }}</sapn>
+            </div>
+            <div>
+                <label for="shop_orderbundle_order_discount" class="required">Email</label>
+                <sapn>{{ user.email }}</sapn>
+            </div>
+            <div>
+                <label for="shop_orderbundle_order_discount" class="required">Телефон</label>
+                <sapn>{{ user.phone }}</sapn>
+            </div>
+
+            <h3 class="order_subtitle">Итого</h3>
+            <div>
+                <label for="shop_orderbundle_order_discount" class="required">Скидка</label>
+                <sapn>{{ entity.discount }}</sapn> руб.
+            </div>
+
+            <div class="order_itog">
+                <label for="shop_orderbundle_order_itog" class="required">К оплате</label>
+                <sapn>{{ entity.itog }}</sapn> руб.
+            </div>
+
+            <div>
+                <input type="submit" name="order_submit_button" value="Оформить"/>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

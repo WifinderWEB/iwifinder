@@ -37,4 +37,33 @@ class BrandController extends Controller
             )
         );
     }
+
+    public function showAction($brand, $alias)
+    {
+        $catalog = $this->get('catalog_api')->getTreeByAlias($alias, $brand);
+
+        if ($catalog['result'] == 'error')
+            throw new NotFoundHttpException($catalog['message']);
+
+        $goods = array();
+        $items = array();
+        foreach($catalog['result']['items'] as $one){
+            if(!isset($one['child']))
+                $goods[] = $one;
+            else
+                $items[] = $one;
+        }
+
+        return $this->render(
+            'ShopFrontendBundle:Brand:show.html.twig', array(
+                'alias' => $alias,
+                'items' => $items,
+                'project' => $catalog['result']['project'],
+                'goods' => addslashes(json_encode($goods)),
+                'filters' => $catalog['result']['filters'],
+                'content' => $catalog['result']['content'],
+                'count' => count($goods)
+            )
+        );
+    }
 }

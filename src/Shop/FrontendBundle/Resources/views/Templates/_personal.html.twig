@@ -1,0 +1,21 @@
+<ul class="menu">
+    {% set link = "/contacts"%}
+    <li><a href="{{link|localeLink()}}">Адреса и телефоны</a></li>
+    {% set link = "/help"%}
+    <li><a href="{{link|localeLink()}}">Помощь</a></li>
+    <li class="lk">
+        {% set link = "/user/personal"%}
+        <a href="{{link|localeLink()}}">{% if app.user %}{{ app.user.username }}{% else %}Личный кабинет{% endif %}</a>
+        <ul>
+            {% set link = "/user/orders"%}
+            <li><a href="{{link|localeLink()}}">Мои заказы</a></li>
+            {% if app.user %}
+                {% set link = "/user/logout"%}
+                <li><a href="{{link|localeLink()}}">Выход</a></li>
+            {% else %}
+                {% set link = "/user/login"%}
+                <li><a href="{{link|localeLink()}}">Вход в аккаунт</a></li>
+            {% endif %}
+        </ul>
+    </li>
+</ul>

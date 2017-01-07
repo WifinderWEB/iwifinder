@@ -2,11 +2,14 @@
 
 <div id="catalogBox">
     <script type="text/javascript">
+        {% if content != null %}
         var goodsList = JSON.parse("{{content|raw }}");
+        {% endif %}
+        var dataFilters = JSON.parse("{{ dataFilters|raw }}");
         var alias= "{{ alias }}";
         var count = {{ count }};
     </script>
-    <div style="text-align: center" ng-show="count == ''">
+    <div style="text-align: center" ng-show="count === ''">
         <img src="/bundles/pizonebackend/img/ajax-loader.gif"/>
     </div>
     {% verbatim %}

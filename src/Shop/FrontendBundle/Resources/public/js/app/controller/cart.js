@@ -121,6 +121,7 @@ function CartCtrl($scope, $state){
         // EventDispatcher.DispatchEvent('change-cart');
         // $('#' + $scope.cartModalId).hide();
         // $state.go('order', {cart: $scope.goods});
+        return false;
     }
 
     function executeQuery(query, callback){
