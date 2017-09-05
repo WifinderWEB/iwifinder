@@ -10,3 +10,7 @@ shop_frontend_order_create:
 shop_frontend_order_empty:
     path:  /order/empty
     defaults: { _controller: ShopFrontendBundle:Content:index, alias: 'order_empty' }
+
+shop_frontend_order_list:
+    path:  /user/orders
+    defaults: { _controller: ShopOrderBundle:Order:list }

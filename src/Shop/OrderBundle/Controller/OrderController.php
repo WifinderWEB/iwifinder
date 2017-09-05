@@ -161,4 +161,18 @@ class OrderController extends Controller
             'ShopOrderBundle:Order:index.html.twig', array()
         );
     }
+
+    public function listAction(){
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('shop_security_login');
+        }
+
+        $list = $this->getDoctrine()->getRepository('ShopOrderBundle:Order', 'user')->findByUser($this->getUser());
+
+        return $this->render(
+            'ShopOrderBundle:Order:list.html.twig', array(
+                'items' => $list
+            )
+        );
+    }
 }

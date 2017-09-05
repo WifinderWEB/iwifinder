@@ -90,6 +90,11 @@ class Order{
     protected $goods;
 
     /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    protected $status;
+
+    /**
      * @var datetime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -467,5 +472,57 @@ class Order{
     public function getProjectId()
     {
         return $this->project_id;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Order
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        if($this->status)
+            return $this->status;
+        else
+            return 'Новый';
+    }
+
+    public function getFullName(){
+        if($this->getUser())
+            return $this->getUser()->getFullName();
+        return '';
+    }
+
+    public function getAddress(){
+        $result  = array();
+        if($this->getCountry())
+            $result[] = $this->getCountry();
+        if($this->getRegion())
+            $result[] = $this->getRegion();
+        if($this->getCity())
+            $result[] = $this->getCity();
+        if($this->getStreet())
+            $result[] = 'ул. ' . $this->getStreet();
+        if($this->getHouse())
+            $result[] = 'дом № ' . $this->getHouse();
+        if($this->getRoom())
+            $result[] = 'кв. ' . $this->getRoom();
+        if($this->getPostcode())
+            $result[] = 'почтовый индекс ' . $this->getPostcode();
+
+        return implode(', ', $result);
     }
 }

@@ -1201,3 +1201,10 @@ section.register form .span6 input:first-child{
     font-size: 20px;
     font-weight: 700;
 }
+.order table{
+    width: 100%;
+}
+.order table td, .order table th{
+    padding: 10px;
+    text-align: left;
+}

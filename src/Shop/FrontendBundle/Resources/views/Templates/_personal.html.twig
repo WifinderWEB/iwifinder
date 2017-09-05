@@ -7,9 +7,9 @@
         {% set link = "/user/personal"%}
         <a href="{{link|localeLink()}}">{% if app.user %}{{ app.user.username }}{% else %}Личный кабинет{% endif %}</a>
         <ul>
-            {% set link = "/user/orders"%}
-            <li><a href="{{link|localeLink()}}">Мои заказы</a></li>
             {% if app.user %}
+                {% set link = "/user/orders"%}
+                <li><a href="{{link|localeLink()}}">Мои заказы</a></li>
                 {% set link = "/user/logout"%}
                 <li><a href="{{link|localeLink()}}">Выход</a></li>
             {% else %}

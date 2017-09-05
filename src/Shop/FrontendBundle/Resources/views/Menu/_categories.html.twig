@@ -24,6 +24,7 @@
                                     <li>
                                         {% set link = "/catalog/" ~ one3.alias %}
                                         <a href="{{link|localeLink()}}">{{ one3.title }}</a>
+                                        <div class="clear"></div>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -33,16 +34,16 @@
                     {% endfor %}
                 </ul>
 
-                <a href="/ip-kamery/ulichnaia/" class="corner videonablyudenie" target="_blank">
-                    <img class="lazy" src="/emptydot.gif" data-original="/images/menu_sections/videonablyudenie.png" alt="Видеонаблюдение" title="Видеонаблюдение">
-                </a>
+                {#<a href="/ip-kamery/ulichnaia/" class="corner videonablyudenie" target="_blank">#}
+                    {#<img class="lazy" src="/emptydot.gif" data-original="/images/menu_sections/videonablyudenie.png" alt="Видеонаблюдение" title="Видеонаблюдение">#}
+                {#</a>#}
             </div>
             {% endif %}
         </li>
         {% endfor %}
-        <li class="brands">
-            {% set link = "/brands" %}
-            <a href="{{link|localeLink()}}">Каталог по брендам</a>
-        </li>
+        {#<li class="brands">#}
+            {#{% set link = "/brands" %}#}
+            {#<a href="{{link|localeLink()}}">Каталог по брендам</a>#}
+        {#</li>#}
     </ul>
 </nav>

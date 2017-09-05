@@ -1,0 +1,76 @@
+{% extends 'ShopFrontendBundle:Templates:FullWidthTemplate.html.twig' %}
+
+{% block title %}
+    <title>Моя корзина</title>
+{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Моя корзина">
+    <meta http-equiv="description" content="Моя корзина">
+{% endblock %}
+{% block meta_keywords %}
+    <meta name="Keywords" content="Моя корзина">
+    <meta http-equiv="Keywords" content="Моя корзина">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  filter='cssrewrite, ?yui_css' output='assetic/css/compiled/lk.min.css'
+    'bundles/shopfrontend/css/lk.css'
+    %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="breadcrumbs">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    {% set link = "/"%}
+                    <a href="{{link|localeLink()}}">
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Оформление заказа</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section  class="lk cart">
+        <div class="wrapper">
+            <div class="title">Оформление заказа</div>
+            <div class="order" ng-controller="CartCtrl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Дата</th>
+                            <th>Товары в заказе</th>
+                            <th>Сумма</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.created|date("d.m.Y H:i") }}</td>
+                                <td>
+                                    {% for goods in item.goods %}
+                                        <div>{{ goods.title }}</div>
+                                    {% endfor %}
+                                </td>
+                                <td><span class="price">{{ item.itog }}</span></td>
+                                <td>{{ item.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

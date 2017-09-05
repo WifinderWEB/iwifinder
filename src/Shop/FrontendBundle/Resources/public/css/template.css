@@ -1735,7 +1735,8 @@ section.breadcrumbs.bg_f3f4f6{
 section.breadcrumbs li{
     display: inline-block;
     padding-right: 12px;
-    background: url("../img/icons.gif") right -280px no-repeat;
+    background: url("../img/home-128.png") no-repeat;
+    background-size: contain;
     color: #252525;
     font-size: 13px;
 }

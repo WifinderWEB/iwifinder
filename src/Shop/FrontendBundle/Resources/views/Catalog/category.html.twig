@@ -37,7 +37,7 @@
             {% if category.title is defined %}
             <h1>{{ category.title }}</h1>
             {% verbatim %}
-            <span>({{ count }})</span>
+            <span class="ng-hide" ng-show="count > 0">({{ count }})</span>
             {% endverbatim %}
             <br class="clear">
             {% endif %}
